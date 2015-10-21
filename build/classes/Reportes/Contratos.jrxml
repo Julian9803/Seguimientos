@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b1579947-1953-4745-a045-2a1bfb06efa5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     contratos.`jefeInmediato` AS contratos_jefeInmediato,
+     contratos.`cargoJefe` AS contratos_cargoJefe,
+     contratos.`fechaInicial` AS contratos_fechaInicial,
+     contratos.`fechaFinal` AS contratos_fechaFinal,
+     contratos.`tipoContrato` AS contratos_tipoContrato,
+     contratos.`programa` AS contratos_programa,
+     contratos.`ficha` AS contratos_ficha,
+     empresa.`Razon_Social` AS empresa_Razon_Social,
+     usuario.`Nombres` AS usuario_Nombres,
+     usuario.`Apellidos` AS usuario_Apellidos,
+     usuario.`Telefono` AS usuario_Telefono,
+     empresa.`NIT` AS empresa_NIT,
+     empresa.`Direccion` AS empresa_Direccion,
+     contratos.`sede` AS contratos_sede
+FROM
+     `contratos` contratos INNER JOIN `empresa` empresa ON contratos.`idEmpresa` = empresa.`idEmpresa`
+     INNER JOIN `usuario` usuario ON contratos.`aprendiz` = usuario.`idUsuarios`]]>
+	</queryString>
+	<field name="usuario_Nombres" class="java.lang.String"/>
+	<field name="usuario_Apellidos" class="java.lang.String"/>
+	<field name="usuario_Telefono" class="java.lang.Long"/>
+	<field name="empresa_Razon_Social" class="java.lang.String"/>
+	<field name="empresa_NIT" class="java.lang.Long"/>
+	<field name="empresa_Direccion" class="java.lang.String"/>
+	<field name="contratos_sede" class="java.lang.String"/>
+	<field name="contratos_jefeInmediato" class="java.lang.String"/>
+	<field name="contratos_cargoJefe" class="java.lang.String"/>
+	<field name="contratos_fechaInicial" class="java.sql.Date"/>
+	<field name="contratos_fechaFinal" class="java.sql.Date"/>
+	<field name="contratos_tipoContrato" class="java.lang.String"/>
+	<field name="contratos_programa" class="java.lang.String"/>
+	<field name="contratos_ficha" class="java.lang.Integer"/>
+	<group name="empresa_Razon_Social">
+		<groupExpression><![CDATA[$F{empresa_Razon_Social}]]></groupExpression>
+		<groupHeader>
+			<band height="37">
+				<frame>
+					<reportElement mode="Opaque" x="-21" y="7" width="843" height="24" forecolor="#B89F7D" backcolor="#F2EBDF" uuid="d2e55151-cfec-4704-889f-f21d9c7e99c1"/>
+					<rectangle>
+						<reportElement mode="Opaque" x="21" y="0" width="36" height="24" backcolor="#736343" uuid="6b461633-dd19-4b1a-a840-028aa2a2d17b"/>
+						<graphicElement>
+							<pen lineWidth="0.0"/>
+						</graphicElement>
+					</rectangle>
+					<textField>
+						<reportElement style="SubTitle" x="68" y="0" width="755" height="24" forecolor="#736343" uuid="e74d31cd-259c-4f19-be4b-e707542e1f59"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{empresa_Razon_Social}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="8dde7673-dd58-4593-b838-3272bdc34de3"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Contratos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="80fd19c3-1e81-4105-8456-8f04b69b95ca"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Contratros de Aprendizes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="19810f69-8ed2-4db6-941f-14fe4fffc58c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="61" height="15" forecolor="#736343" uuid="81470152-3fc8-4724-831b-eced29b4433a"/>
+				<text><![CDATA[usuario_Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="61" y="0" width="61" height="15" forecolor="#736343" uuid="1e473743-e441-41df-9ed2-18cd4153a543"/>
+				<text><![CDATA[usuario_Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="122" y="0" width="61" height="15" forecolor="#736343" uuid="915930b8-ed03-4cd3-b8bc-4b6b9fc1021a"/>
+				<text><![CDATA[usuario_Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="183" y="0" width="61" height="15" forecolor="#736343" uuid="8368a707-7b6f-4c96-b43b-be92cedbe030"/>
+				<text><![CDATA[empresa_NIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="244" y="0" width="61" height="15" forecolor="#736343" uuid="5bc68b59-adfc-4b02-9211-5eb87474089b"/>
+				<text><![CDATA[empresa_Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="305" y="0" width="61" height="15" forecolor="#736343" uuid="26b2d454-ec2e-4dc4-a4cd-0c587a365308"/>
+				<text><![CDATA[contratos_sede]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="366" y="0" width="61" height="15" forecolor="#736343" uuid="07bb22d3-54b0-43f1-982d-d88d9c2731d4"/>
+				<text><![CDATA[contratos_jefeInmediato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="427" y="0" width="61" height="15" forecolor="#736343" uuid="a7702f4c-f731-4432-a2ae-1aa8e6720596"/>
+				<text><![CDATA[contratos_cargoJefe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="488" y="0" width="61" height="15" forecolor="#736343" uuid="5842ea3d-65f1-4d19-b44d-52614b511c33"/>
+				<text><![CDATA[contratos_fechaInicial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="549" y="0" width="61" height="15" forecolor="#736343" uuid="1677c6c8-926a-47f2-aa5c-f7e241acf34a"/>
+				<text><![CDATA[contratos_fechaFinal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="610" y="0" width="61" height="15" forecolor="#736343" uuid="1bc8a5bc-5243-454a-bc51-0379cef43773"/>
+				<text><![CDATA[contratos_tipoContrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="671" y="0" width="61" height="15" forecolor="#736343" uuid="ed3cac9b-f531-46c7-b3a5-9bcbf019c610"/>
+				<text><![CDATA[contratos_programa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="732" y="0" width="61" height="15" forecolor="#736343" uuid="a6166c15-5379-46fa-ba53-bbf3822bce61"/>
+				<text><![CDATA[contratos_ficha]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="8ba89962-84da-4892-b029-6197f58354f7"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="61" height="15" uuid="582fdc55-8944-4302-82c4-cd430c86ed29"/>
+					<textFieldExpression><![CDATA[$F{usuario_Nombres}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="61" y="0" width="61" height="15" uuid="32113f87-8b49-4036-9050-bfc48972ac25"/>
+					<textFieldExpression><![CDATA[$F{usuario_Apellidos}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="122" y="0" width="61" height="15" uuid="e8fe52d2-15b9-441a-a34c-ac62bf58ae3f"/>
+					<textFieldExpression><![CDATA[$F{usuario_Telefono}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="183" y="0" width="61" height="15" uuid="118e59e9-f9f8-40b5-b54d-a9f7f3a8fffc"/>
+					<textFieldExpression><![CDATA[$F{empresa_NIT}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="244" y="0" width="61" height="15" uuid="67ae86df-f2a0-488f-8e38-4506b0d15593"/>
+					<textFieldExpression><![CDATA[$F{empresa_Direccion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="305" y="0" width="61" height="15" uuid="5d0b6cbd-b33f-411e-bd47-34e789894327"/>
+					<textFieldExpression><![CDATA[$F{contratos_sede}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="366" y="0" width="61" height="15" uuid="e744c139-040e-4d47-b294-79e034e148e5"/>
+					<textFieldExpression><![CDATA[$F{contratos_jefeInmediato}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="427" y="0" width="61" height="15" uuid="bfa97d88-1e72-4c6f-91ef-fae031b5ed3b"/>
+					<textFieldExpression><![CDATA[$F{contratos_cargoJefe}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="488" y="0" width="61" height="15" uuid="99bc3093-e44e-4518-9522-0aa2c235beb5"/>
+					<textFieldExpression><![CDATA[$F{contratos_fechaInicial}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="549" y="0" width="61" height="15" uuid="f5beb6f0-bb79-49a7-879a-fe64f327543b"/>
+					<textFieldExpression><![CDATA[$F{contratos_fechaFinal}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="610" y="0" width="61" height="15" uuid="c88100eb-b067-497d-88fd-618363f02490"/>
+					<textFieldExpression><![CDATA[$F{contratos_tipoContrato}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="671" y="0" width="61" height="15" uuid="01b83017-c6ac-4bb2-9087-53b85c2f121f"/>
+					<textFieldExpression><![CDATA[$F{contratos_programa}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="732" y="0" width="61" height="15" uuid="570264a2-797d-4d57-b464-1ecd04fddf8f"/>
+					<textFieldExpression><![CDATA[$F{contratos_ficha}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="a7a9740e-fec8-46c8-a231-dfdc69ee7b9c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="1f718664-981d-433c-a461-2b0b019f2a9e"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="362bd9aa-6a18-4bce-9201-cd0f58dd737f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="b14d75e2-c911-478f-9ccd-82424dcc005e"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="2e23e43a-30ad-46e2-8203-e693b85aceb1"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

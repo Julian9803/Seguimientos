@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6af2f800-c286-405b-a78c-f72fd460e147">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     empresa.`Razon_Social` AS empresa_Razon_Social,
+     empresa.`Direccion` AS empresa_Direccion,
+     empresa.`NIT` AS empresa_NIT,
+     empresa.`Telefono` AS empresa_Telefono,
+     empresa.`Email` AS empresa_Email,
+     empresa.`Estado` AS empresa_Estado
+FROM
+     `empresa` empresa]]>
+	</queryString>
+	<field name="empresa_Razon_Social" class="java.lang.String"/>
+	<field name="empresa_Direccion" class="java.lang.String"/>
+	<field name="empresa_NIT" class="java.lang.Long"/>
+	<field name="empresa_Telefono" class="java.lang.Long"/>
+	<field name="empresa_Email" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="126" y="13" width="288" height="33" uuid="b0a5b739-84ba-46f1-96d1-fb4c56088b70"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[REPORTE EMPRESAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="84" y="46" width="190" height="22" uuid="dc1028f1-4b2b-41d2-836e-c9a68999cd17"/>
+				<text><![CDATA[Empresas Registradas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="21593e45-278e-4005-b842-812796ab7458"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="111" height="15" uuid="94d80d9f-1591-4212-8842-84c5765bf94e"/>
+				<text><![CDATA[Razon Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="111" y="19" width="111" height="15" uuid="be3a3226-f0d5-43ff-a141-65febdeec30d"/>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="222" y="19" width="111" height="15" uuid="69d6da60-d200-47dc-8dbb-e6ca46cb0f66"/>
+				<text><![CDATA[NIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="333" y="19" width="111" height="15" uuid="cb38f916-5cd0-4224-9ebe-4d055427d39b"/>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="444" y="19" width="111" height="15" uuid="838cc027-01b5-410a-982e-09387962308c"/>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="ac6dd226-8841-4923-b671-59201f5d140c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="111" height="15" uuid="20119dbb-5520-46bf-bbda-d8db8a3fb668"/>
+				<textFieldExpression><![CDATA[$F{empresa_Razon_Social}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="111" y="0" width="111" height="15" uuid="f12ac2fe-90dc-4167-9e33-ad2f0e66bea5"/>
+				<textFieldExpression><![CDATA[$F{empresa_Direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="222" y="0" width="111" height="15" uuid="28a5c6b8-91f2-4cba-ada3-23e857af95d5"/>
+				<textFieldExpression><![CDATA[$F{empresa_NIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="333" y="0" width="111" height="15" uuid="abd5cf0e-bd44-45dc-8b7a-36be04e76891"/>
+				<textFieldExpression><![CDATA[$F{empresa_Telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="444" y="0" width="111" height="15" uuid="5aec9f0f-7260-49a1-a70a-4c299e29a0d2"/>
+				<textFieldExpression><![CDATA[$F{empresa_Email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="a135e51d-9f1f-486d-947b-279f9d4610fa"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="58265101-cc64-441e-98ed-a1070043ec5a"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="86089825-3254-400d-90a9-c73e60619627"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="2aae88c4-1647-4d53-a9aa-e613a81ee6ed"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
