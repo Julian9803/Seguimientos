@@ -2,10 +2,12 @@
 package Grafico;
 
 import Clases.Contratos;
+import Clases.Empresa;
 import Clases.Seguimientos;
 import Controlador.Hilo;
 import Controlador.controladorHibernate;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -14,11 +16,13 @@ public class verSeguimientos extends javax.swing.JFrame {
     Contratos contrato;
     int idContrato;
     public DefaultTableModel model;
+    public DefaultComboBoxModel modelC;
     public verSeguimientos(Contratos contrato) {
         initComponents();       
         idContrato = contrato.getIdContratos();
         Hilo hilo = new Hilo(JLhora);
         cargarTabla();
+        
         
     }
 
@@ -43,6 +47,8 @@ public class verSeguimientos extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         MnewUser = new javax.swing.JCheckBoxMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -157,6 +163,20 @@ public class verSeguimientos extends javax.swing.JFrame {
 
         jMenu1.add(jMenu3);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Seguimientos.png"))); // NOI18N
+        jMenu2.setText("Segumientos");
+
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ver Seguimientos.png"))); // NOI18N
+        jMenuItem5.setText("Ver Seguimientos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenu1.add(jMenu2);
+
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/close6.png"))); // NOI18N
         jMenuItem1.setText("Salir");
         jMenu1.add(jMenuItem1);
@@ -194,9 +214,9 @@ public class verSeguimientos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JLhora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
+                        .addGap(14, 14, 14)
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 7, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -214,7 +234,6 @@ public class verSeguimientos extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 
         new UIEmpresa().setVisible(true);dispose();
-
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -232,6 +251,11 @@ public class verSeguimientos extends javax.swing.JFrame {
     private void MnewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnewUserActionPerformed
         new NuevoUsuario().setVisible(true);dispose();
     }//GEN-LAST:event_MnewUserActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new totalSeguimientos().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     public void cargarTabla(){
         try{
@@ -251,6 +275,8 @@ public class verSeguimientos extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
+    
+    
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -261,6 +287,7 @@ public class verSeguimientos extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
@@ -269,6 +296,7 @@ public class verSeguimientos extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

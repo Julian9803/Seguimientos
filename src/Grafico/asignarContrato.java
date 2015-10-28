@@ -72,6 +72,8 @@ public class asignarContrato extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         MnewUser = new javax.swing.JCheckBoxMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         jTextField1.setText("jTextField1");
@@ -366,6 +368,20 @@ public class asignarContrato extends javax.swing.JFrame {
 
         jMenu1.add(jMenu3);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Seguimientos.png"))); // NOI18N
+        jMenu2.setText("Segumientos");
+
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ver Seguimientos.png"))); // NOI18N
+        jMenuItem5.setText("Ver Seguimientos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenu1.add(jMenu2);
+
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/close6.png"))); // NOI18N
         jMenuItem1.setText("Salir");
         jMenu1.add(jMenuItem1);
@@ -458,10 +474,18 @@ public class asignarContrato extends javax.swing.JFrame {
         CTinstructor.setText("");        
     }//GEN-LAST:event_CTinstructorMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        String name = Nombre();
+        String apell = apellido();
+        System.out.println("El nombre es: "+name);
+        System.out.println("El apellido es: "+apell);
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 
         new UIEmpresa().setVisible(true);dispose();
-
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -480,14 +504,10 @@ public class asignarContrato extends javax.swing.JFrame {
         new NuevoUsuario().setVisible(true);dispose();
     }//GEN-LAST:event_MnewUserActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        String name = Nombre();
-        String apell = apellido();
-        System.out.println("El nombre es: "+name);
-        System.out.println("El apellido es: "+apell);
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new totalSeguimientos().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
     
     public String Nombre(){
         String jul = (String)CBaprendiz.getSelectedItem();
@@ -726,6 +746,7 @@ public class asignarContrato extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
@@ -734,6 +755,7 @@ public class asignarContrato extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

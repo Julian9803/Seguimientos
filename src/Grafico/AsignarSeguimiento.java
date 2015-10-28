@@ -350,7 +350,7 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
         lista=controladorHibernate.devolverTodoTipo("Usuario", "Instructor");
         CBinstructor.addItem("--Seleccione un Instructor---");
         for(Usuario item: lista){
-            CBinstructor.addItem(item.getCorreo());
+            CBinstructor.addItem(item.getNombres());
         }
         
     }

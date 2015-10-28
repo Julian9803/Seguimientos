@@ -132,23 +132,41 @@ public class Seguimientos  implements java.io.Serializable {
         this.fechaFinalPeriodo = fechaFinalPeriodo;
     }
 
- public Vector arrayToVector2(){
-         Vector lista = new Vector();
+    public Vector arrayToVector2(){
+        Vector lista = new Vector();
                            
-         lista.add(this.idSeguimientos);
+        lista.add(this.idSeguimientos);
 //         lista.add(this.contratos);
-//         lista.add(this.usuario);
-         lista.add(this.numero);
-         lista.add(this.fechaSeguimiento);
-         lista.add(this.ciudad);
-         lista.add(this.tipoInforme);
-         lista.add(this.fechaInicialPeriodo);
-         lista.add(this.fechaFinalPeriodo);
+//        lista.add(this.usuario.getNombres());
+        lista.add(this.numero);
+        lista.add(this.fechaSeguimiento);
+        lista.add(this.ciudad);
+        lista.add(this.tipoInforme);
+        lista.add(this.fechaInicialPeriodo);
+        lista.add(this.fechaFinalPeriodo);
          
      
          
-         return lista;
-     }
+        return lista;
+    }
+    
+    public Vector arrayToVector3(){
+        Vector lista = new Vector();
+                           
+        lista.add(this.idSeguimientos);
+        lista.add(this.contratos);
+        lista.add(this.usuario);
+        lista.add(this.numero);
+        lista.add(this.fechaSeguimiento);
+        lista.add(this.ciudad);
+        lista.add(this.tipoInforme);
+        lista.add(this.fechaInicialPeriodo);
+        lista.add(this.fechaFinalPeriodo);
+         
+     
+         
+        return lista;
+    }
 
 
 }

@@ -159,6 +159,8 @@ public class UIEmpresa extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         MnewUser = new javax.swing.JCheckBoxMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -372,11 +374,12 @@ public class UIEmpresa extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(28, 28, 28)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(CTnit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CTrazon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(CTnit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CTdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -614,10 +617,7 @@ public class UIEmpresa extends javax.swing.JFrame {
 
         JLBhora.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
 
-        jMenuBar1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
         jMenu1.setText("Menu");
-        jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/city8.png"))); // NOI18N
         jMenu6.setText("Empresa");
@@ -681,6 +681,20 @@ public class UIEmpresa extends javax.swing.JFrame {
 
         jMenu1.add(jMenu3);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Seguimientos.png"))); // NOI18N
+        jMenu2.setText("Segumientos");
+
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ver Seguimientos.png"))); // NOI18N
+        jMenuItem5.setText("Ver Seguimientos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenu1.add(jMenu2);
+
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/close6.png"))); // NOI18N
         jMenuItem1.setText("Salir");
         jMenu1.add(jMenuItem1);
@@ -709,7 +723,7 @@ public class UIEmpresa extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(19, Short.MAX_VALUE)
+                        .addContainerGap(20, Short.MAX_VALUE)
                         .addComponent(jLabel13)
                         .addGap(17, 17, 17))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -869,10 +883,25 @@ public class UIEmpresa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            int Fila = TEinhablitadas.getSelectedRow();
+            int id = (Integer) TEinhablitadas.getValueAt(Fila, 0);
+            controladorHibernate.Recuperar("Empresa", "idEmpresa", id);
+            JOptionPane.showMessageDialog(rootPane, "La empresa se a recuperado satisfactoriamente", "Informacion...", JOptionPane.INFORMATION_MESSAGE);
+            cargarTabla();
+            cargarTablaInhabilitada();
+
+        } catch (Exception ex) {
+            System.out.println("Error al activar una empresa " + ex.getMessage());
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "Lo sentimos no se pudo habilitar la empresa", "Error...", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 
         new UIEmpresa().setVisible(true);dispose();
-
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -891,21 +920,10 @@ public class UIEmpresa extends javax.swing.JFrame {
         new NuevoUsuario().setVisible(true);dispose();
     }//GEN-LAST:event_MnewUserActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            int Fila = TEinhablitadas.getSelectedRow();
-            int id = (Integer) TEinhablitadas.getValueAt(Fila, 0);
-            controladorHibernate.Recuperar("Empresa", "idEmpresa", id);
-            JOptionPane.showMessageDialog(rootPane, "La empresa se a recuperado satisfactoriamente", "Informacion...", JOptionPane.INFORMATION_MESSAGE);
-            cargarTabla();
-            cargarTablaInhabilitada();
-
-        } catch (Exception ex) {
-            System.out.println("Error al activar una empresa " + ex.getMessage());
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(rootPane, "Lo sentimos no se pudo habilitar la empresa", "Error...", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new totalSeguimientos().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
     
     private void cargarTablaInhabilitada(){
         String filas[][] = {};
@@ -1072,6 +1090,7 @@ public class UIEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
@@ -1080,6 +1099,7 @@ public class UIEmpresa extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
