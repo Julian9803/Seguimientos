@@ -59,6 +59,17 @@ public class controladorHibernate {
         return lista;       
         
     }
+    public static ArrayList devolverTodoInhabilitado(String Tabla){
+        String SQL = "FROM "+Tabla+" Where Estado= 'Inactivo'";
+        
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        ArrayList<Object> lista = (ArrayList<Object>)session.createQuery(SQL).list();
+        session.getTransaction().commit();
+        return lista;       
+        
+    }
+    
     
     public static ArrayList devolverUnoID(String Tabla, String Campo, int Buscar) {
         String SQL = "FROM " + Tabla + " Where " + Campo + " = " + Buscar + "";
@@ -184,6 +195,25 @@ public class controladorHibernate {
 
         session.getTransaction().commit();     
     }
+    
+    public static void Recuperar(String tabla, String Campo, Integer id) {
+        
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+
+        Query query;
+
+        query = session.createQuery("UPDATE " + tabla + " set estado= :estado WHERE " + Campo + "= :" + Campo + " ");
+
+        query.setParameter("estado", "Activo");
+        query.setLong(Campo, id);
+
+        query.executeUpdate();
+
+        session.getTransaction().commit();     
+    }
+    
     public static List buscarLike(String Tabla,String Tipo,String Buscar){
         
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();

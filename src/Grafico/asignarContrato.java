@@ -61,6 +61,7 @@ public class asignarContrato extends javax.swing.JFrame {
         DCfinal = new com.toedter.calendar.JDateChooser();
         jLabel12 = new javax.swing.JLabel();
         JLBhora = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -159,6 +160,13 @@ public class asignarContrato extends javax.swing.JFrame {
 
         jLabel12.setText("Hora");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -223,7 +231,9 @@ public class asignarContrato extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(CTficha, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(389, 389, 389)
+                        .addGap(44, 44, 44)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(253, 253, 253)
                         .addComponent(BTregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(111, 111, 111)
                         .addComponent(BTlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -287,7 +297,9 @@ public class asignarContrato extends javax.swing.JFrame {
                             .addComponent(CTprograma, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
                             .addComponent(CTficha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(143, 143, 143))))
+                        .addGap(56, 56, 56)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
 
         jMenu1.setText("Menu");
@@ -384,29 +396,38 @@ public class asignarContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_CBcontratoActionPerformed
 
     private void BTregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTregistrarActionPerformed
+        boolean entrar1 = true;
         
-        int dias= 0;    
-        dias = diferenciaEnDias2(DCinicial.getDate(), DCfinal.getDate());
-        boolean entrar = false;
-        System.out.println("El numero de dias es: "+dias);
-        if((dias>80&dias<95)||(dias>172&dias<185)){
-            entrar = true;
-        }else{
-            entrar = false;
+        if((CTcargojefe.getText().equals(""))||(CTestudiante.getText().equals(""))||(CTficha.getText().equals(""))||(CTinstructor.getText().equals(""))||(CTjefe.getText().equals(""))||(CTprograma.getText().equals(""))||(CTsede.getText().equals(""))||(CBaprendiz.getSelectedItem().equals("--Seleccione Un Aprendiz--"))||(CBaprendiz.getSelectedItem().equals("No hay aprendis con ese nombre"))||(CBempresa.getSelectedItem().equals("---Seleccione una Empresa---"))||(CBempresa.getSelectedItem().equals("No hay registro de empresas"))||(CBcontrato.getSelectedItem().equals("---Seleccione Una Opcion---"))){
+            entrar1 = false;
+            JOptionPane.showMessageDialog(rootPane, "Por favor complete todos los campos", "Informacion...", JOptionPane.WARNING_MESSAGE);            
         }
-        Date fechaI = DCinicial.getDate();
-        Date fechaF = DCfinal.getDate();
         
-        System.out.println("Entrar: "+entrar);
-        if(entrar){ 
-            int opcion = JOptionPane.showConfirmDialog(null, "Esta seguro de registrar este contrato?","Confirmacion¡¡",JOptionPane.OK_CANCEL_OPTION);
-
-            if(opcion == JOptionPane.OK_OPTION){
-                registrar();       
-                JOptionPane.showMessageDialog(null,"Se registro el nuevo contrato correctamente","Informacion¡¡",JOptionPane.INFORMATION_MESSAGE);
+        if(entrar1){
+        
+            int dias= 0;    
+            dias = diferenciaEnDias2(DCinicial.getDate(), DCfinal.getDate());
+            boolean entrar = false;
+            System.out.println("El numero de dias es: "+dias);
+            if((dias>80&dias<95)||(dias>172&dias<185)){
+                entrar = true;
+            }else{
+                entrar = false;
             }
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Por favor verifique que el contrato dure 3 meses o 6 meses....", "Error¡¡", JOptionPane.WARNING_MESSAGE);
+            Date fechaI = DCinicial.getDate();
+            Date fechaF = DCfinal.getDate();
+
+            System.out.println("Entrar: "+entrar);
+            if(entrar){ 
+                int opcion = JOptionPane.showConfirmDialog(null, "Esta seguro de registrar este contrato?","Confirmacion¡¡",JOptionPane.OK_CANCEL_OPTION);
+
+                if(opcion == JOptionPane.OK_OPTION){
+                    registrar();       
+                    JOptionPane.showMessageDialog(null,"Se registro el nuevo contrato correctamente","Informacion¡¡",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Por favor verifique que el contrato dure 3 meses o 6 meses....", "Error¡¡", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_BTregistrarActionPerformed
 
@@ -458,7 +479,53 @@ public class asignarContrato extends javax.swing.JFrame {
     private void MnewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnewUserActionPerformed
         new NuevoUsuario().setVisible(true);dispose();
     }//GEN-LAST:event_MnewUserActionPerformed
-        
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        String name = Nombre();
+        String apell = apellido();
+        System.out.println("El nombre es: "+name);
+        System.out.println("El apellido es: "+apell);
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public String Nombre(){
+        String jul = (String)CBaprendiz.getSelectedItem();
+        char[] pas = jul.toCharArray();
+        String Nombre = "";
+        char aux;
+        for(int i = 0; i<pas.length; i++){
+            aux = pas[i];
+            if(aux=='-'){
+                System.out.println("Inicio apellido");
+                return Nombre;
+            }else{
+                Nombre += pas[i];
+                
+            }
+        }
+        return "Sin nombre";
+    }
+    
+    public String apellido(){
+        String jul = (String)CBaprendiz.getSelectedItem();
+        char[] pas = jul.toCharArray();
+        String Nombre = "";
+        char aux;
+        int p = 0;
+        for(int i = 0; i<pas.length; i++){
+            aux = pas[i];
+            if(p == 1){                
+                Nombre += pas[i];                
+            }
+            if(aux=='-'){
+                p = 1;
+            }
+            
+        }
+        return Nombre;
+    }
+    
     //Cargar combo box
     public static int diferenciaEnDias2(Date fechaMayor, Date fechaMenor) {
 
@@ -528,7 +595,7 @@ public class asignarContrato extends javax.swing.JFrame {
        
        if(tama != 0){
             for(Usuario item: lista){
-                CBaprendiz.addItem(item.getNombres() +" "+ item.getApellidos() );
+                CBaprendiz.addItem(item.getNombres() +"-"+ item.getApellidos() );
             }   
        }else{
            CBempresa.addItem("No hay registro de aprendises");
@@ -569,6 +636,9 @@ public class asignarContrato extends javax.swing.JFrame {
         
         //empresa.setIdEmpresa((Integer)CBempresa.getSelectedItem());
         //usuario.setIdUsuarios((Integer)CBaprendiz.getSelectedItem());  
+        String Nombre = Nombre();
+        String Apellido = apellido();
+        
         
         String BuscarE = (String) CBempresa.getSelectedItem();
         ArrayList<Empresa> lista = new ArrayList<Empresa>();
@@ -582,7 +652,9 @@ public class asignarContrato extends javax.swing.JFrame {
         
         String BuscarU = (String) CBaprendiz.getSelectedItem();
         ArrayList<Usuario> listaU = new ArrayList<Usuario>();
-        listaU = controladorHibernate.devolverCampo("Usuario", "Nombres", BuscarU);
+        String SQL = "FROM Usuario WHERE Nombres ='"+Nombre+"' AND Apellidos = '"+Apellido+"' AND Estado = 'Activo'";
+                System.out.println("El SQL de Usuarios es: "+SQL);
+        listaU = controladorHibernate.devolverSQL(SQL);
         int idU = 0;
         for(Usuario item: listaU){
             idU = item.getIdUsuarios();
@@ -639,6 +711,7 @@ public class asignarContrato extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser DCinicial;
     private javax.swing.JLabel JLBhora;
     private javax.swing.JCheckBoxMenuItem MnewUser;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

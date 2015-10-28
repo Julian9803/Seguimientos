@@ -291,18 +291,31 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int opcion = JOptionPane.showConfirmDialog(rootPane, "Esta seguro de asignar este seguimiento?", "Confirmacion", JOptionPane.OK_CANCEL_OPTION);
-        
-        if(opcion == JOptionPane.OK_OPTION){
-            try {
-                registrar();
-                JOptionPane.showMessageDialog(rootPane, "Se asigno el seguimiento correctamente","EnhoraBuena¡¡",JOptionPane.INFORMATION_MESSAGE);
-                dispose();
-            } catch (Exception e) {
-                System.out.println("Error al insertar: "+e.getMessage());
-                JOptionPane.showMessageDialog(rootPane, "Lo sentimos no se pudo asignar el seguimiento intetelo de nuevo","Error¡¡",JOptionPane.WARNING_MESSAGE);
-                e.printStackTrace();
+        try{
+            boolean entrar = true;
+
+            if((CTciudad.getText().equals(""))||(CTnumero.getText().equals(""))||(CBinstructor.getSelectedItem().equals("--Seleccione un Instructor---"))){
+                JOptionPane.showMessageDialog(rootPane, "Por favor complete todos los campos", "Informacion...", JOptionPane.WARNING_MESSAGE);
+                entrar = false;
             }
+
+            if(entrar){
+                int opcion = JOptionPane.showConfirmDialog(rootPane, "Esta seguro de asignar este seguimiento?", "Confirmacion", JOptionPane.OK_CANCEL_OPTION);
+
+                if(opcion == JOptionPane.OK_OPTION){
+                    try {
+                        registrar();
+                        JOptionPane.showMessageDialog(rootPane, "Se asigno el seguimiento correctamente","EnhoraBuena¡¡",JOptionPane.INFORMATION_MESSAGE);
+                        dispose();
+                    } catch (Exception e) {
+                        System.out.println("Error al insertar: "+e.getMessage());
+                        JOptionPane.showMessageDialog(rootPane, "Lo sentimos no se pudo asignar el seguimiento intetelo de nuevo","Error¡¡",JOptionPane.WARNING_MESSAGE);
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(rootPane, "Por favor complete todos los campos", "Informacion....", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -335,6 +348,7 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
     public void comboInstructores(){
         ArrayList<Usuario> lista = new ArrayList<Usuario>();
         lista=controladorHibernate.devolverTodoTipo("Usuario", "Instructor");
+        CBinstructor.addItem("--Seleccione un Instructor---");
         for(Usuario item: lista){
             CBinstructor.addItem(item.getCorreo());
         }

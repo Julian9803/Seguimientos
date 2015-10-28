@@ -507,16 +507,25 @@ public class ActualizarContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int opcion = JOptionPane.showConfirmDialog(rootPane, "Esta seguro de actualizar este contrato?", "Confirmacion..¡", JOptionPane.OK_CANCEL_OPTION);
-        if(opcion == JOptionPane.OK_OPTION){
-            try{
-                actualizarDatos();
-                JOptionPane.showMessageDialog(rootPane, "Se actualiso correctamente la informacion","EnhoraBuena¡¡",JOptionPane.INFORMATION_MESSAGE);
-            }catch(Exception ex){
-                JOptionPane.showMessageDialog(rootPane, "Lo sentimo ocurrios un problema al actualizar...","Error",JOptionPane.WARNING_MESSAGE);
-                System.out.println("Error al actualizar: "+ex.getMessage());
-                ex.printStackTrace();
-            }    
+        boolean entrar = true;
+        
+        if((CTaprendiz.getText().equals(""))||(CTcargo.getText().equals(""))||(CTcontrato.getText().equals(""))||(CTempresa.getText().equals(""))||(CTficha.getText().equals(""))||(CTjefe.getText().equals(""))||(CTprograma.getText().equals(""))||(CTsede.getText().equals(""))||(CBaprendiz.getSelectedItem().equals("--Seleccione Un Aprendiz--"))||(CBempresa.getSelectedItem().equals("---Seleccione una Empresa---"))){
+            entrar = false;
+            JOptionPane.showMessageDialog(rootPane, "Por favor complete todos los campos", "Informacion....", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        if(entrar){
+            int opcion = JOptionPane.showConfirmDialog(rootPane, "Esta seguro de actualizar este contrato?", "Confirmacion..¡", JOptionPane.OK_CANCEL_OPTION);
+            if(opcion == JOptionPane.OK_OPTION){
+                try{
+                    actualizarDatos();
+                    JOptionPane.showMessageDialog(rootPane, "Se actualiso correctamente la informacion","EnhoraBuena¡¡",JOptionPane.INFORMATION_MESSAGE);
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(rootPane, "Lo sentimo ocurrios un problema al actualizar...","Error",JOptionPane.WARNING_MESSAGE);
+                    System.out.println("Error al actualizar: "+ex.getMessage());
+                    ex.printStackTrace();
+                }    
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

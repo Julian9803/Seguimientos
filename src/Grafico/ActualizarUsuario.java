@@ -18,6 +18,7 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         llenaCampo();
+        validarTXT(false);
         
         
         id = usuario.getIdUsuarios();
@@ -71,6 +72,10 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         CBtipousuario = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        JLuser = new javax.swing.JLabel();
+        JLpass = new javax.swing.JLabel();
+        CTuser = new javax.swing.JTextField();
+        CTpass = new javax.swing.JPasswordField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -111,24 +116,24 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Nombre");
 
         CTapellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Apellido");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Telefono");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Correo");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Direccion");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Tipo de usuario");
 
         CTnombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -140,7 +145,12 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         CTtelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         CBtipousuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        CBtipousuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione ", "Aprendiz", "Instructor", "Coordinador", "Lider" }));
+        CBtipousuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Aprendiz", "Instructor", "Coordinador", "Lider" }));
+        CBtipousuario.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CBtipousuarioItemStateChanged(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Actualizar");
@@ -155,6 +165,20 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        JLuser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JLuser.setText("User");
+
+        JLpass.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        JLpass.setText("Contraseña");
+
+        CTuser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        CTpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CTpassActionPerformed(evt);
             }
         });
 
@@ -176,20 +200,26 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(JLuser, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(JLpass, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addGap(24, 24, 24)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(CTapellido, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(CTcorreo, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(CTdireccion, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(CTtelefono, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(CBtipousuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jButton2)
-                            .addGap(39, 39, 39)
-                            .addComponent(jButton1)))
+                                .addComponent(CBtipousuario, javax.swing.GroupLayout.Alignment.LEADING, 0, 160, Short.MAX_VALUE)
+                                .addComponent(CTuser, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CTpass, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(93, 93, 93))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +230,7 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(CTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -220,11 +250,19 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CBtipousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(55, 55, 55)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JLuser)
+                    .addComponent(CTuser, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JLpass)
+                    .addComponent(CTpass, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(56, 56, 56))
+                .addGap(21, 21, 21))
         );
 
         jMenu1.setText("Menu");
@@ -332,16 +370,33 @@ public class ActualizarUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        boolean entrar = true;
         
-        
-        int confirm = JOptionPane.showConfirmDialog(null,"Desea actualizar el usuario" , "Actualizar" , JOptionPane.OK_CANCEL_OPTION);
-  
-        if(confirm ==  JOptionPane.OK_OPTION){
+        if((CTapellido.getText().equals(""))||(CTcorreo.getText().equals(""))||(CTdireccion.getText().equals(""))||(CTnombre.getText().equals(""))||(CTtelefono.getText().equals(""))||(CBtipousuario.getSelectedItem().equals("Seleccione"))){
             
-            actualizar();
+            entrar = false;
+            JOptionPane.showMessageDialog(rootPane, "Por favor complete todos los campos", "Informacion...", JOptionPane.WARNING_MESSAGE);
             
         }
         
+        if((CBtipousuario.getSelectedItem().equals("Coordinador"))||(CBtipousuario.getSelectedItem().equals("Lider"))){
+            if((CTapellido.getText().equals(""))||(CTcorreo.getText().equals(""))||(CTdireccion.getText().equals(""))||(CTnombre.getText().equals(""))||(CTtelefono.getText().equals(""))||(CBtipousuario.getSelectedItem().equals("Seleccione"))||(CTuser.getText().equals(""))){
+            
+            entrar = false;
+            JOptionPane.showMessageDialog(rootPane, "Por favor complete todos los campos", "Informacion...", JOptionPane.WARNING_MESSAGE);
+            
+            }
+        }
+        
+        if(entrar){
+            int confirm = JOptionPane.showConfirmDialog(null,"Desea actualizar el usuario" , "Actualizar" , JOptionPane.OK_CANCEL_OPTION);
+
+            if(confirm ==  JOptionPane.OK_OPTION){
+
+                actualizar();
+
+            }
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -366,6 +421,22 @@ public class ActualizarUsuario extends javax.swing.JFrame {
     private void MnewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnewUserActionPerformed
         new NuevoUsuario().setVisible(true);dispose();
     }//GEN-LAST:event_MnewUserActionPerformed
+
+    private void CBtipousuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBtipousuarioItemStateChanged
+        String tipo = (String) CBtipousuario.getSelectedItem();
+        
+
+        if((tipo.equals("Lider"))||(tipo.equals("Coordinador"))){
+            validarTXT(true);
+        }else{
+            validarTXT(false);
+        }
+        
+    }//GEN-LAST:event_CBtipousuarioItemStateChanged
+
+    private void CTpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CTpassActionPerformed
 
     
     
@@ -416,7 +487,14 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         
     }
     
-    
+    public void validarTXT(boolean estado){
+        
+        CTuser.setVisible(estado);
+        CTpass.setVisible(estado);
+        JLpass.setVisible(estado);
+        JLuser.setVisible(estado);
+        
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -425,7 +503,11 @@ public class ActualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField CTcorreo;
     private javax.swing.JTextField CTdireccion;
     private javax.swing.JTextField CTnombre;
+    private javax.swing.JPasswordField CTpass;
     private javax.swing.JTextField CTtelefono;
+    private javax.swing.JTextField CTuser;
+    private javax.swing.JLabel JLpass;
+    private javax.swing.JLabel JLuser;
     private javax.swing.JCheckBoxMenuItem MnewUser;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
