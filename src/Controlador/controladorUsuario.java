@@ -21,7 +21,7 @@ public class controladorUsuario {
         
         for(Usuario item: lista){           
             
-            
+            session.getTransaction().commit();
             return true;
         }
         session.getTransaction().commit();

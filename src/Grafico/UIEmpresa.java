@@ -32,7 +32,6 @@ public class UIEmpresa extends javax.swing.JFrame {
         Hilo hilo = new Hilo(JLBhora);
         hilo.start();
         cargarTabla();
-        esconderId();
         CTBuscar();
         cargarTxtEmpresa();
         this.setLocationRelativeTo(null);
@@ -51,12 +50,12 @@ public class UIEmpresa extends javax.swing.JFrame {
         
         String razonsocial = CTrazon.getText();
         String direccion = CTdireccion.getText();
-        String nit = CTnit.getText();
+        long nit = Long.parseLong(CTnit.getText());
         long telefono =   Long.parseLong( CTtelefono.getText());
         
         String email = CTemail.getText();
  
-         Empresa empresa = new Empresa(actualizar, razonsocial, direccion, telefono, telefono, email, "Activo");
+         Empresa empresa = new Empresa(actualizar, razonsocial, direccion, nit, telefono, email, "Activo");
          
          
          ArrayList<Empresa> lista = new ArrayList<Empresa>();
@@ -145,6 +144,17 @@ public class UIEmpresa extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         JLBhora = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        MnewUser = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -158,6 +168,7 @@ public class UIEmpresa extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
@@ -539,6 +550,78 @@ public class UIEmpresa extends javax.swing.JFrame {
             .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
+        jMenu1.setText("Menu");
+
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/city8.png"))); // NOI18N
+        jMenu6.setText("Empresa");
+
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buildings8.png"))); // NOI18N
+        jMenuItem3.setText("Ver empresas");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem3);
+
+        jMenu1.add(jMenu6);
+
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/documents7.png"))); // NOI18N
+        jMenu4.setText("Contratos");
+
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/write61.png"))); // NOI18N
+        jMenuItem2.setText("Contratos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem2);
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Nuevo Contrato");
+        jCheckBoxMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/pages.png"))); // NOI18N
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jCheckBoxMenuItem1);
+
+        jMenu1.add(jMenu4);
+
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/multiple25.png"))); // NOI18N
+        jMenu3.setText("Usuarios");
+
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/group2.png"))); // NOI18N
+        jMenuItem4.setText("Ver Usuarios");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem4);
+
+        MnewUser.setSelected(true);
+        MnewUser.setText("Nuevo Usuario");
+        MnewUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/user91.png"))); // NOI18N
+        MnewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnewUserActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MnewUser);
+
+        jMenu1.add(jMenu3);
+
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/close6.png"))); // NOI18N
+        jMenuItem1.setText("Salir");
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -568,8 +651,11 @@ public class UIEmpresa extends javax.swing.JFrame {
     private void BTregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTregistrarActionPerformed
 
         int opcion = JOptionPane.showConfirmDialog(null, "Esta seguro de registrar?", "Confirmacion", JOptionPane.OK_CANCEL_OPTION);
-
-        if(opcion == JOptionPane.OK_OPTION){
+        boolean Entrar = true;
+        
+        System.out.println("Soy gay Julian jejejejjejeje..... :3 putito");
+        
+        if((opcion == JOptionPane.OK_OPTION)&&(Entrar)){
 
             String razonSocial = CTNrazon.getText();
             String direcion = CTNDireccion.getText();
@@ -580,7 +666,7 @@ public class UIEmpresa extends javax.swing.JFrame {
 
             Empresa empresa = new Empresa(razonSocial, direcion, Nit, telefono, email, estado);
             controladorHibernate.insertarObjecto(empresa);
-            JOptionPane.showMessageDialog(null, "Se registro el nuevo usuario satisfactoriamente","Informacion¡¡",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se registro la nueva empresa satisfactoriamente","Informacion¡¡",JOptionPane.INFORMATION_MESSAGE);
             limpiar();
             cargarTabla();
 
@@ -619,7 +705,7 @@ public class UIEmpresa extends javax.swing.JFrame {
         if(!Buscar.equals("")){
             buscarLike(Tipo, Buscar);
         }else{
-            JOptionPane.showMessageDialog(null, "Digite un valor para buscar...","Error¡¡",JOptionPane.WARNING_MESSAGE);
+            cargarTabla();
         }
     }//GEN-LAST:event_CTbuscarKeyReleased
 
@@ -639,7 +725,16 @@ public class UIEmpresa extends javax.swing.JFrame {
     private void BTdeshabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTdeshabilitarActionPerformed
         int opcion = JOptionPane.showConfirmDialog(null, "Esta seguro de deshabilitar esta empresa","Confimarcion¡¡",JOptionPane.OK_CANCEL_OPTION);
         if(opcion==JOptionPane.OK_OPTION){
-
+            int fila =  Tempresas.getSelectedRow();
+            int id = (Integer)Tempresas.getValueAt(fila,0);
+            
+            Empresa m = new Empresa();
+            
+            m.setIdEmpresa(id);
+            
+            controladorEmpresa.eliminarEmpresa(m);
+            cargarTabla();
+            
         }
     }//GEN-LAST:event_BTdeshabilitarActionPerformed
 
@@ -647,7 +742,7 @@ public class UIEmpresa extends javax.swing.JFrame {
         conexionReporte conn = new conexionReporte();
         try {
             conn.conectar();
-            String dire = "F:\\Proyecto Seguimiento\\Seguimientos\\src\\Reportes\\Empresas.jrxml";
+            String dire = "E:\\Proyecto Seguimiento\\Seguimientos\\src\\Reportes\\Empresas.jrxml";
             JasperReport reporteJasper = JasperCompileManager.compileReport(dire);
             JasperPrint mostrarReprote = JasperFillManager.fillReport(reporteJasper, null,conn.getConn());
             JasperViewer.viewReport(mostrarReprote);
@@ -656,6 +751,28 @@ public class UIEmpresa extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+
+        new UIEmpresa().setVisible(true);dispose();
+
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new verContratos().setVisible(true);dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        new asignarContrato().setVisible(true);dispose();
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new UIusuario().setVisible(true);dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void MnewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnewUserActionPerformed
+        new NuevoUsuario().setVisible(true);dispose();
+    }//GEN-LAST:event_MnewUserActionPerformed
     
     private void cargarTabla(){
         String filas[][]={};
@@ -670,6 +787,8 @@ public class UIEmpresa extends javax.swing.JFrame {
             model.addRow(item.arrayToVector());
         }
         
+                esconderId();
+
         
     }
    
@@ -723,7 +842,7 @@ public class UIEmpresa extends javax.swing.JFrame {
         
         try{
             String filas[][] = {};
-            String columnas[] = {"idUsuario", "Nombre", "Apellido", "Telefono", "Correo", "Direccion", "Tipo de Usuario", "User", "Contraseña"};
+            String columnas[] = {"idEmpresa", "Razon Social", "Direccion", "NIT", "Telefono", "Email"};
             model = new DefaultTableModel(filas, columnas);
             Tempresas.setModel(model);
             
@@ -776,9 +895,11 @@ public class UIEmpresa extends javax.swing.JFrame {
     private javax.swing.JTextField CTrazon;
     private javax.swing.JTextField CTtelefono;
     private javax.swing.JLabel JLBhora;
+    private javax.swing.JCheckBoxMenuItem MnewUser;
     private javax.swing.JTable Tempresas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -792,6 +913,15 @@ public class UIEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -19,7 +19,7 @@ public class Hilo extends Thread {
             SimpleDateFormat SF = new SimpleDateFormat("hh:mm:ss");
             label.setText(SF.format(hoy));
             try {
-                sleep(1000);
+                sleep(100);
             } catch (Exception e) {
                 System.out.println("Error en el hilo: "+e.getMessage());
                 e.printStackTrace();

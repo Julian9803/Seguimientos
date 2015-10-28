@@ -60,4 +60,26 @@ public class controladorEmpresa {
          
     }
     
+    public static void eliminarEmpresa(Empresa empresa) {
+
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        
+
+        session.beginTransaction();
+
+        Query query;
+
+        query = session.createQuery("UPDATE Empresa set Estado= :Estado  WHERE idEmpresa= :idEmpresa");
+
+                    query.setParameter("Estado", "Inactivo");
+                    
+                    query.setLong("idEmpresa", empresa.getIdEmpresa());
+
+        query.executeUpdate();
+
+       
+        session.getTransaction().commit();
+         
+    }
+    
 }

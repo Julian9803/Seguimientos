@@ -1,6 +1,9 @@
 
 package Grafico;
+import Clases.Usuario;
+import Controlador.controladorHibernate;
 import Controlador.controladorUsuario;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -117,7 +120,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(CBtipo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(78, 78, 78))
         );
@@ -144,31 +147,69 @@ public class Login extends javax.swing.JFrame {
         if(CBtipo.getSelectedItem().equals("--Seleccione Una Opcion---")){
             CTUser.setEnabled(false);
             CTpassword.setEnabled(false);
+            jLabel4.setEnabled(true);
         }else if(CBtipo.getSelectedItem().equals("Instructor")){    
-            CTUser.setEnabled(true);
-            CTpassword.setVisible(false);
-            jLabel4.setVisible(false);
+            CTUser.setEnabled(false);
+            CTpassword.setEnabled(true);
+            jLabel4.setEnabled(true);
         }else{
             CTUser.setEnabled(true);
             CTpassword.setEnabled(true);
+            jLabel4.setEnabled(true);
         }
     }//GEN-LAST:event_CBtipoItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         String User = CTUser.getText();
-        String pass = CTpassword.getText();
         
-        String SQL = "";
-               SQL += "FROM Usuario Where User='"+User+"' and Pass='"+pass+"'";
-               
-        boolean result = controladorUsuario.validarUsuario(SQL);
+        int tipo = CBtipo.getSelectedIndex();
+        String tip = (String)CBtipo.getSelectedItem();
+        String pass2 = CTpassword.getText();
+        boolean result = false;
+        int aux=0;
         
+        if(tip.equalsIgnoreCase("Instructor")){
+            String sql = "FROM Usuario WHERE TipoUsuario = 'Instructor' AND Pass = '"+pass2+"'";
+            ArrayList<Usuario> lista = new ArrayList<Usuario>();
+            Usuario usuario2 = new Usuario();
+            lista = controladorHibernate.devolverSQL(sql);
+            for(Usuario item: lista){
+                usuario2.setIdUsuarios(item.getIdUsuarios());
+                usuario2.setNombres(item.getNombres());
+            }
+            seguimientoProfesor sP = new seguimientoProfesor(usuario2);
+            sP.setVisible(true);
+            dispose();
+            tipo = 3;
+            result = true;
+            
+        }
         
-        
+        if(tipo != 3){
+                    String pass = CTpassword.getText();
+
+                    String SQL = "";
+                           SQL += "FROM Usuario Where User='"+User+"' and Pass='"+pass+"'";
+
+                    result = controladorUsuario.validarUsuario(SQL);
+                    aux=1;
+                    System.out.println("Result = "+result);
+                    
+        }else{
+            
+                   
+        }
         
         if(result == true){
             JOptionPane.showMessageDialog(rootPane, "Bienvenido "+User,"EnhoraBuena",JOptionPane.INFORMATION_MESSAGE);
             
+            if(aux == 1){
+                new Menu().setVisible(true);dispose();
+            }else if(aux == 2){
+                
+            }
+             
         }else{
             JOptionPane.showMessageDialog(rootPane, "Error usuario no encontrado","Error",JOptionPane.WARNING_MESSAGE);
         }

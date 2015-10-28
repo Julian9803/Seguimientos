@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 
 
 public class controladorHibernate {
-    public static  Session sesion ;
+    /*public static  Session sesion ;
     
     public static List Query (String query){
         Query q  = sesion.createQuery(query);
@@ -27,7 +27,7 @@ public class controladorHibernate {
     public static Object unicode (String query){
         Query q  = sesion.createQuery(query);
        return q.uniqueResult();
-    }
+    }*/
     
     
     public static ArrayList devolverSinEstado(String Tabla){
@@ -38,6 +38,15 @@ public class controladorHibernate {
         ArrayList<Object> lista = (ArrayList<Object>)session.createQuery(string).list();
         session.getTransaction().commit();
         return lista;    
+    }
+    
+    public static ArrayList devolverSQL(String SQL){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        ArrayList<Object> lista = (ArrayList<Object>)session.createQuery(SQL).list();
+        session.getTransaction().commit();
+        return lista;
+                
     }
     
     public static ArrayList devolverTodo(String Tabla){
@@ -51,19 +60,22 @@ public class controladorHibernate {
         
     }
     
-    public static ArrayList devolverUnoID(String Tabla, String Campo, int Buscar){
-        String SQL = "FROM "+Tabla+" Where "+Campo+" = "+Buscar+"";
-        
+    public static ArrayList devolverUnoID(String Tabla, String Campo, int Buscar) {
+        String SQL = "FROM " + Tabla + " Where " + Campo + " = " + Buscar + "";
+         //String SQL = "FROM "+Tabla+" ";
+
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        ArrayList<Object> lista = (ArrayList<Object>)session.createQuery(SQL).list();
+        ArrayList<Object> lista = (ArrayList<Object>) session.createQuery(SQL).list();
         session.getTransaction().commit();
         return lista;
     }
     
+   
+    
     public static ArrayList devolverTodoTipo(String Tabla, String Tipo){
         String SQL = "FROM "+Tabla+" Where TipoUsuario = '"+Tipo+"' AND Estado= 'Activo'";
-        Usuario usuario = new Usuario();
+        
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         ArrayList<Object> lista = (ArrayList<Object>)session.createQuery(SQL).list();
@@ -155,12 +167,28 @@ public class controladorHibernate {
 
         session.getTransaction().commit();     
     }
-    
+    public static void delete2(String tabla, String classId, Integer id) {
+        
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+
+        Query query;
+
+        query = session.createQuery("UPDATE " + tabla + " set estado= :estado WHERE " + classId + "= :" + classId + " ");
+
+        query.setParameter("estado", "Inactivo");
+        query.setLong(classId, id);
+
+        query.executeUpdate();
+
+        session.getTransaction().commit();     
+    }
     public static List buscarLike(String Tabla,String Tipo,String Buscar){
         
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Query query = session.createQuery("FROM "+Tabla+" WHERE "+Tipo+" like '%"+Buscar+"%' ");
+        Query query = session.createQuery("FROM "+Tabla+" WHERE "+Tipo+" like '%"+Buscar+"%' AND estado='Activo' ");
         List<Object> List = query.list();
         session.getTransaction().commit();
         return List;

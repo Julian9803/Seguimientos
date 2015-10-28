@@ -127,6 +127,17 @@ public class Empresa  implements java.io.Serializable {
          lista.add(this.estado);
          return lista;
     }
+    public Vector arrayToVector2(){
+         Vector lista = new Vector();
+         lista.add(this.idEmpresa);
+         lista.add(this.razonSocial);
+         lista.add(this.direccion);
+         lista.add(this.nit);
+         lista.add(this.telefono);
+         lista.add(this.email);
+
+         return lista;
+    }
 
     @Override
     public String toString() {

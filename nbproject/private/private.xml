@@ -3,21 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/AsignarSeguimiento.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/Login.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/informacionContrato.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Controlador/Hilo.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/asignarContrato.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/verContratos.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/ActualizarUsuario.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/ActualizarContrato.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Controlador/controladorHibernate.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Controlador/conexionReporte.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/NuevoUsuario.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/Menu.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/UIusuario.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Clases/Seguimientos.java</file>
-            <file>file:/F:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/UIEmpresa.java</file>
+            <file>file:/E:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/seguimientoProfesor.java</file>
+            <file>file:/E:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/UIEmpresa.java</file>
+            <file>file:/E:/Proyecto%20Seguimiento/Seguimientos/src/Grafico/totalSeguimientos.java</file>
         </group>
     </open-files>
 </project-private>
