@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import Controlador.controladorEmpresa;
 import Controlador.controladorHibernate;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -295,6 +296,11 @@ public class UIEmpresa extends javax.swing.JFrame {
         jLabel2.setText("Razon Social");
 
         CTrazon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        CTrazon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CTrazonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Direccion");
@@ -305,11 +311,21 @@ public class UIEmpresa extends javax.swing.JFrame {
         jLabel4.setText("NIT");
 
         CTnit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        CTnit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTnitKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Telefono");
 
         CTtelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        CTtelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTtelefonoKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Email");
@@ -434,12 +450,23 @@ public class UIEmpresa extends javax.swing.JFrame {
                 CTNnitActionPerformed(evt);
             }
         });
+        CTNnit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTNnitKeyTyped(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setText("Telefono");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setText("Email");
+
+        CTNtelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTNtelefonoKeyTyped(evt);
+            }
+        });
 
         BTregistrar.setText("Registrar");
         BTregistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -924,6 +951,55 @@ public class UIEmpresa extends javax.swing.JFrame {
         new totalSeguimientos().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void CTrazonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTrazonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CTrazonActionPerformed
+
+    private void CTtelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTtelefonoKeyTyped
+        
+        int k=(int)evt.getKeyChar();
+        if (k < 123 && k > 64) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar ese tipo de caracter!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTtelefono.transferFocus();
+        }
+    }//GEN-LAST:event_CTtelefonoKeyTyped
+
+    private void CTnitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTnitKeyTyped
+        int k=(int)evt.getKeyChar();
+        if (k < 123 && k > 64) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar ese tipo de caracter!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+           CTnit.transferFocus();
+        }
+    }//GEN-LAST:event_CTnitKeyTyped
+
+    private void CTNnitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTNnitKeyTyped
+       int k=(int)evt.getKeyChar();
+        if (k < 123 && k > 64) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar ese tipo de caracter!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+           CTNnit.transferFocus();
+        }
+    }//GEN-LAST:event_CTNnitKeyTyped
+
+    private void CTNtelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTNtelefonoKeyTyped
+        int k=(int)evt.getKeyChar();
+        if (k < 123 && k > 64) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar ese tipo de caracter!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+           CTNtelefono.transferFocus();
+        }
+    }//GEN-LAST:event_CTNtelefonoKeyTyped
     
     private void cargarTablaInhabilitada(){
         String filas[][] = {};

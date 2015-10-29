@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import Controlador.controladorUsuario;
 
 import Clases.Usuario;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 
@@ -30,11 +31,12 @@ public class ActualizarUsuario extends javax.swing.JFrame {
        String correo = usuario.getCorreo();
        String direccion = usuario.getDireccion();
        String tipo = usuario.getTipoUsuario();
-       
+       String documento = String.valueOf(usuario.getNumeroDocumento());
        
        CTnombre.setText(nombre);
        CTapellido.setText(apellido);
        CTtelefono.setText(telefono);
+       CTdocumento.setText(documento);
        CTcorreo.setText(correo);
        CTdireccion.setText(direccion);
        CBtipousuario.setSelectedItem(tipo);
@@ -76,6 +78,8 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         JLpass = new javax.swing.JLabel();
         CTuser = new javax.swing.JTextField();
         CTpass = new javax.swing.JPasswordField();
+        jLabel8 = new javax.swing.JLabel();
+        CTdocumento = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -122,6 +126,11 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         jLabel2.setText("Nombre");
 
         CTapellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        CTapellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTapellidoKeyTyped(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Apellido");
@@ -139,12 +148,27 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         jLabel7.setText("Tipo de usuario");
 
         CTnombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        CTnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTnombreKeyTyped(evt);
+            }
+        });
 
         CTcorreo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        CTcorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTcorreoKeyTyped(evt);
+            }
+        });
 
         CTdireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         CTtelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        CTtelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTtelefonoKeyTyped(evt);
+            }
+        });
 
         CBtipousuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         CBtipousuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Aprendiz", "Instructor", "Coordinador", "Lider" }));
@@ -184,6 +208,11 @@ public class ActualizarUsuario extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setText("Numero Documento");
+
+        CTdocumento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -197,15 +226,20 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                             .addGap(24, 24, 24)
                             .addComponent(CTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(JLuser, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(JLpass, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addGap(24, 24, 24)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(JLuser, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(JLpass, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGap(24, 24, 24))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addGap(18, 18, 18)))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(CTapellido, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(CTcorreo, javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,9 +247,10 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                                 .addComponent(CTtelefono, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(CBtipousuario, javax.swing.GroupLayout.Alignment.LEADING, 0, 160, Short.MAX_VALUE)
                                 .addComponent(CTuser, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(CTpass, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(CTpass, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CTdocumento, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
@@ -236,7 +271,11 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CTapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CTdocumento, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(CTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -259,7 +298,7 @@ public class ActualizarUsuario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JLpass)
-                    .addComponent(CTpass, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                    .addComponent(CTpass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -388,20 +427,28 @@ public class ActualizarUsuario extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         boolean entrar = true;
         
-        if((CTapellido.getText().equals(""))||(CTcorreo.getText().equals(""))||(CTdireccion.getText().equals(""))||(CTnombre.getText().equals(""))||(CTtelefono.getText().equals(""))||(CBtipousuario.getSelectedItem().equals("Seleccione"))){
-            
-            entrar = false;
-            JOptionPane.showMessageDialog(rootPane, "Por favor complete todos los campos", "Informacion...", JOptionPane.WARNING_MESSAGE);
-            
+        
+        if((CBtipousuario.getSelectedItem().equals("Instructor"))||(CBtipousuario.getSelectedItem().equals("Aprendiz"))){
+            if((CTapellido.getText().equals(""))||(CTcorreo.getText().equals(""))||(CTdireccion.getText().equals(""))||(CTnombre.getText().equals(""))||(CTtelefono.getText().equals(""))||(CBtipousuario.getSelectedItem().equals("Seleccione"))){
+
+                entrar = false;
+                JOptionPane.showMessageDialog(rootPane, "Por favor complete todos los campos", "Informacion...", JOptionPane.WARNING_MESSAGE);
+
+            }
         }
         
         if((CBtipousuario.getSelectedItem().equals("Coordinador"))||(CBtipousuario.getSelectedItem().equals("Lider"))){
-            if((CTapellido.getText().equals(""))||(CTcorreo.getText().equals(""))||(CTdireccion.getText().equals(""))||(CTnombre.getText().equals(""))||(CTtelefono.getText().equals(""))||(CBtipousuario.getSelectedItem().equals("Seleccione"))||(CTuser.getText().equals(""))){
+            if((CTapellido.getText().equals(""))||(CTcorreo.getText().equals(""))||(CTdireccion.getText().equals(""))||(CTnombre.getText().equals(""))||(CTtelefono.getText().equals(""))||(CBtipousuario.getSelectedItem().equals("Seleccione"))||(CTuser.getText().equals(""))||(CTpass.getText().equals(""))){
             
             entrar = false;
             JOptionPane.showMessageDialog(rootPane, "Por favor complete todos los campos", "Informacion...", JOptionPane.WARNING_MESSAGE);
             
             }
+        }
+        
+        if(CBtipousuario.getSelectedItem().equals("Seleccione")){
+            entrar = false;
+            JOptionPane.showMessageDialog(rootPane, "Por favor seleccione un usuario", "Informacion...", JOptionPane.WARNING_MESSAGE);
         }
         
         if(entrar){
@@ -458,6 +505,47 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void CTnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTnombreKeyTyped
+        int k=(int)evt.getKeyChar();
+        
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+           CTnombre.transferFocus();
+        }
+    }//GEN-LAST:event_CTnombreKeyTyped
+
+    private void CTapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTapellidoKeyTyped
+        int k=(int)evt.getKeyChar();
+        
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+           CTapellido.transferFocus();
+        }
+    }//GEN-LAST:event_CTapellidoKeyTyped
+
+    private void CTtelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTtelefonoKeyTyped
+        
+         int k=(int)evt.getKeyChar();
+        if (k < 123 && k > 64) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar ese tipo de caracter!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTtelefono.transferFocus();
+        }
+        
+    }//GEN-LAST:event_CTtelefonoKeyTyped
+
+    private void CTcorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTcorreoKeyTyped
+        
+    }//GEN-LAST:event_CTcorreoKeyTyped
+
     
     
     private void actualizar(){
@@ -465,6 +553,7 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         String nombre = CTnombre.getText();
         String apellido = CTapellido.getText();
         long telefono =   Long.parseLong( CTtelefono.getText());
+        long numeroDocumento = Long.parseLong(CTdocumento.getText());
         String correo = CTcorreo.getText();
         String direccion = CTdireccion.getText();
         String TipoUsuario = CBtipousuario.getSelectedItem().toString();
@@ -522,6 +611,7 @@ public class ActualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField CTapellido;
     private javax.swing.JTextField CTcorreo;
     private javax.swing.JTextField CTdireccion;
+    private javax.swing.JTextField CTdocumento;
     private javax.swing.JTextField CTnombre;
     private javax.swing.JPasswordField CTpass;
     private javax.swing.JTextField CTtelefono;
@@ -539,6 +629,7 @@ public class ActualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

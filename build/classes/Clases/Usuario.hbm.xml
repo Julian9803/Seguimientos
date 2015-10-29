@@ -17,6 +17,9 @@
         <property name="telefono" type="long">
             <column name="Telefono" not-null="true" />
         </property>
+        <property name="numeroDocumento" type="long">
+            <column name="numeroDocumento" not-null="true" />
+        </property>
         <property name="correo" type="string">
             <column name="Correo" length="50" not-null="true" />
         </property>

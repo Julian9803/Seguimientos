@@ -7,6 +7,7 @@ import Clases.Usuario;
 import Controlador.Hilo;
 import Controlador.controladorHibernate;
 import Util.HibernateUtil;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -246,8 +247,20 @@ public class ActualizarContrato extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Jefe Inmediato");
 
+        CTjefe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTjefeKeyTyped(evt);
+            }
+        });
+
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Cargo Gefe");
+
+        CTcargo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTcargoKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Fecha Inicial");
@@ -258,6 +271,12 @@ public class ActualizarContrato extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Sede");
 
+        CTsede.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTsedeKeyTyped(evt);
+            }
+        });
+
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Tipo Contrato");
 
@@ -266,8 +285,20 @@ public class ActualizarContrato extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Programa");
 
+        CTprograma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTprogramaKeyTyped(evt);
+            }
+        });
+
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Ficha");
+
+        CTficha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTfichaKeyTyped(evt);
+            }
+        });
 
         jButton1.setText("Actualizar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -283,10 +314,34 @@ public class ActualizarContrato extends javax.swing.JFrame {
             }
         });
 
+        CTaprendiz.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTaprendizKeyTyped(evt);
+            }
+        });
+
+        CTempresa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTempresaKeyTyped(evt);
+            }
+        });
+
+        CTcontrato.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTcontratoKeyTyped(evt);
+            }
+        });
+
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel12.setText("Hora");
 
         JLBhora.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+
+        DCinicial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DCinicialKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -570,6 +625,108 @@ public class ActualizarContrato extends javax.swing.JFrame {
         new totalSeguimientos().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void CTaprendizKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTaprendizKeyTyped
+        int k=(int)evt.getKeyChar();
+        
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTaprendiz.transferFocus();
+        }
+    }//GEN-LAST:event_CTaprendizKeyTyped
+
+    private void CTempresaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTempresaKeyTyped
+        int k=(int)evt.getKeyChar();
+        
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTempresa.transferFocus();
+        }
+    }//GEN-LAST:event_CTempresaKeyTyped
+
+    private void CTjefeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTjefeKeyTyped
+        
+        int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTjefe.transferFocus();
+        }
+    }//GEN-LAST:event_CTjefeKeyTyped
+
+    private void CTcargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTcargoKeyTyped
+       int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTcargo.transferFocus();
+        }
+    }//GEN-LAST:event_CTcargoKeyTyped
+
+    private void CTprogramaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTprogramaKeyTyped
+        int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTprograma.transferFocus();
+        }
+    }//GEN-LAST:event_CTprogramaKeyTyped
+
+    private void CTsedeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTsedeKeyTyped
+         int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTsede.transferFocus();
+        }
+    }//GEN-LAST:event_CTsedeKeyTyped
+
+    private void CTcontratoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTcontratoKeyTyped
+         int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTcontrato.transferFocus();
+        }
+    }//GEN-LAST:event_CTcontratoKeyTyped
+
+    private void CTfichaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTfichaKeyTyped
+         int k=(int)evt.getKeyChar();
+        if (k < 123 && k > 64) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar ese tipo de caracter!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTficha.transferFocus();
+        }
+    }//GEN-LAST:event_CTfichaKeyTyped
+
+    private void DCinicialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DCinicialKeyTyped
+       int k=(int)evt.getKeyChar();
+        if (k < 123 && k > 64) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar ese tipo de caracter!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            DCinicial.transferFocus();
+        }
+    }//GEN-LAST:event_DCinicialKeyTyped
 
     
     

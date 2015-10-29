@@ -505,7 +505,7 @@ public class UIusuario extends javax.swing.JFrame {
         try{
             
             String filas[][]={};
-            String columnas[]={"idUsuario","Nombre","Apellido","Telefono","Correo","Direccion","Tipo de Usuario","User","Contraseña"};
+            String columnas[]={"idUsuario","Nombre","Numero Documento","Apellido","Telefono","Correo","Direccion","Tipo de Usuario","User","Contraseña"};
             model = new DefaultTableModel(filas,columnas);
             Tusuarios.setModel(model);
             

@@ -4,6 +4,7 @@ package Grafico;
 import Clases.Contratos;
 import Clases.Empresa;
 import Clases.Seguimientos;
+import Controlador.Hilo;
 import Controlador.controladorHibernate;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -17,6 +18,8 @@ public class totalSeguimientos extends javax.swing.JFrame {
     public totalSeguimientos() {
         initComponents();
         this.setLocationRelativeTo(null);
+        Hilo hilo = new Hilo(JLhora);
+        hilo.start();
         cargarTabla();
         cargarEmpresa();
     }
@@ -64,7 +67,15 @@ public class totalSeguimientos extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(Tseguimientos);
 
         jButton1.setText("Volver");

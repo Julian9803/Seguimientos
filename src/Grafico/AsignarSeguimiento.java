@@ -5,6 +5,7 @@ import Clases.Contratos;
 import Clases.Seguimientos;
 import Clases.Usuario;
 import Controlador.controladorHibernate;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -71,7 +72,7 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
 
         jLabel3.setText("Numero");
 
-        jLabel4.setText("Fecha Segumento");
+        jLabel4.setText("Fecha Seguimiento");
 
         jLabel5.setText("Ciudad");
 
@@ -80,6 +81,18 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
         jLabel7.setText("Fecha Inicial Periodo");
 
         jLabel8.setText("Fecha Final Periodo");
+
+        CTnumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTnumeroKeyTyped(evt);
+            }
+        });
+
+        CTciudad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTciudadKeyTyped(evt);
+            }
+        });
 
         jButton1.setText("Asignar Seguimiento");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +157,7 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
                             .addComponent(DCFinicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(CBinforme, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(CTciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,6 +357,28 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
     private void MnewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnewUserActionPerformed
         new NuevoUsuario().setVisible(true);dispose();
     }//GEN-LAST:event_MnewUserActionPerformed
+
+    private void CTnumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTnumeroKeyTyped
+        int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTnumero.transferFocus();
+        }
+    }//GEN-LAST:event_CTnumeroKeyTyped
+
+    private void CTciudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTciudadKeyTyped
+         int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTciudad.transferFocus();
+        }
+    }//GEN-LAST:event_CTciudadKeyTyped
     
     public void comboInstructores(){
         ArrayList<Usuario> lista = new ArrayList<Usuario>();

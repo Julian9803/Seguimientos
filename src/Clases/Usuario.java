@@ -15,7 +15,8 @@ public class Usuario  implements java.io.Serializable {
      private Integer idUsuarios;
      private String nombres;
      private String apellidos;
-     private long telefono;
+     private long numeroDocumento;
+     private long telefono;     
      private String correo;
      private String direccion;
      private String tipoUsuario;
@@ -30,6 +31,7 @@ public class Usuario  implements java.io.Serializable {
         lista.add(this.idUsuarios);
         lista.add(this.nombres);
         lista.add(this.apellidos);
+        lista.add(this.numeroDocumento);
         lista.add(this.telefono);
         lista.add(this.correo);
         lista.add(this.direccion);
@@ -68,10 +70,11 @@ public class Usuario  implements java.io.Serializable {
        this.contratoses = contratoses;
     }
 
-    public Usuario( String nombres, String apellidos, long telefono, String correo, String direccion, String tipoUsuario, String user, String pass, String estado) {
+    public Usuario( String nombres, String apellidos, long numeroDocumento, long telefono, String correo, String direccion, String tipoUsuario, String user, String pass, String estado) {
         
         this.nombres = nombres;
         this.apellidos = apellidos;
+        this.numeroDocumento = numeroDocumento;
         this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
@@ -91,14 +94,22 @@ public class Usuario  implements java.io.Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
+    
+    
+    
+    
     public Usuario(Integer idUsuarios) {
         this.idUsuarios = idUsuarios;
     }
 
-    
-   
-    
-    
+    public long getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(long numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    } 
+           
     public Integer getIdUsuarios() {
         return this.idUsuarios;
     }

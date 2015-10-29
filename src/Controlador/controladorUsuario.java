@@ -70,10 +70,11 @@ public class controladorUsuario {
         Query query;
 
         query = session.createQuery("UPDATE Usuario set Nombres = :Nombres ,Apellidos= :Apellidos , "
-                + " Telefono = :Telefono , Correo= :Correo , Direccion = :Direccion , TipoUsuario= :TipoUsuario  WHERE idUsuarios= :idUsuarios");
+                + " numeroDocumento = :numeroDocumento , Telefono = :Telefono , Correo= :Correo , Direccion = :Direccion , TipoUsuario= :TipoUsuario  WHERE idUsuarios= :idUsuarios");
 
                     query.setParameter("Nombres", user.getNombres());
                     query.setParameter("Apellidos", user.getApellidos());
+                    query.setLong("numeroDocumento", user.getTelefono());
                     query.setLong("Telefono", user.getTelefono());
                     query.setParameter("Correo", user.getCorreo());
                     query.setParameter("Direccion", user.getDireccion());

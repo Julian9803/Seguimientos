@@ -9,6 +9,7 @@ import Clases.Empresa;
 import Controlador.Hilo;
 import Controlador.controladorHibernate;
 import static Grafico.UIusuario.diferenciaEnDias2;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -101,6 +102,9 @@ public class asignarContrato extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 CTestudianteKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTestudianteKeyTyped(evt);
+            }
         });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -118,13 +122,28 @@ public class asignarContrato extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 CTinstructorKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTinstructorKeyTyped(evt);
+            }
         });
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel4.setText("Jefe Inmediato");
 
+        CTjefe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTjefeKeyTyped(evt);
+            }
+        });
+
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel5.setText("Cargo Jefe");
+
+        CTcargojefe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTcargojefeKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel6.setText("Fecha Inicial");
@@ -138,6 +157,12 @@ public class asignarContrato extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel9.setText("Tipo Contrato");
 
+        CTsede.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTsedeKeyTyped(evt);
+            }
+        });
+
         CBcontrato.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---Seleccione Una Opcion---", "Contrato de Aprendizaje", "Vinculación Laboral o Contractua", "Proyecto Productivo", "Unidad Productiva Familiar", "Empresas del Estado", "ONG y Sin Animo de Lucro", "Monitorias", "Pasantias" }));
         CBcontrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,8 +173,20 @@ public class asignarContrato extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel10.setText("Programa");
 
+        CTprograma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTprogramaKeyTyped(evt);
+            }
+        });
+
         jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel11.setText("Ficha");
+
+        CTficha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CTfichaKeyTyped(evt);
+            }
+        });
 
         BTregistrar.setText("Registrar");
         BTregistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -508,6 +545,83 @@ public class asignarContrato extends javax.swing.JFrame {
         new totalSeguimientos().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void CTestudianteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTestudianteKeyTyped
+         int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTestudiante.transferFocus();
+        }
+    }//GEN-LAST:event_CTestudianteKeyTyped
+
+    private void CTinstructorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTinstructorKeyTyped
+         int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTinstructor .transferFocus();
+        }
+    }//GEN-LAST:event_CTinstructorKeyTyped
+
+    private void CTjefeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTjefeKeyTyped
+        int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTjefe.transferFocus();
+        }
+    }//GEN-LAST:event_CTjefeKeyTyped
+
+    private void CTcargojefeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTcargojefeKeyTyped
+        int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTcargojefe.transferFocus();
+        }
+    }//GEN-LAST:event_CTcargojefeKeyTyped
+
+    private void CTsedeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTsedeKeyTyped
+        int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTsede.transferFocus();
+        }
+    }//GEN-LAST:event_CTsedeKeyTyped
+
+    private void CTprogramaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTprogramaKeyTyped
+        int k=(int)evt.getKeyChar();
+        if (k > 47 && k < 58) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTprograma.transferFocus();
+        }
+    }//GEN-LAST:event_CTprogramaKeyTyped
+
+    private void CTfichaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTfichaKeyTyped
+        int k=(int)evt.getKeyChar();
+        if (k < 123 && k > 64) {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar ese tipo de caracter!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+        }
+         if(k==10){
+            CTficha.transferFocus();
+        }
+    }//GEN-LAST:event_CTfichaKeyTyped
     
     public String Nombre(){
         String jul = (String)CBaprendiz.getSelectedItem();

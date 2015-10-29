@@ -395,6 +395,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="CTjefe">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CTjefeKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -405,6 +408,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="CTcargo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CTcargoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -431,6 +437,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="CTsede">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CTsedeKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -466,6 +475,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="CTprograma">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CTprogramaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -476,6 +488,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="CTficha">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CTfichaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
@@ -494,10 +509,19 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="CTaprendiz">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CTaprendizKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="CTempresa">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CTempresaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="CTcontrato">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CTcontratoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
@@ -515,6 +539,9 @@
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="DCinicial">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DCinicialKeyTyped"/>
+          </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="DCfinal">
         </Component>
