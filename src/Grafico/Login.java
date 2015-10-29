@@ -12,7 +12,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        Bloquear();
+        
     }
 
     
@@ -29,7 +29,6 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         CTpassword = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
-        CBtipo = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,7 +74,7 @@ public class Login extends javax.swing.JFrame {
                             .addGap(86, 86, 86)
                             .addComponent(jLabel3))
                         .addComponent(CTpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,14 +93,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Tipo de Usuario");
-
-        CBtipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Seleccione Una Opcion---", "Coordinador", "Lider", "Instructor" }));
-        CBtipo.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CBtipoItemStateChanged(evt);
-            }
-        });
+        jLabel2.setText("Digite la informacion para continuar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,23 +109,19 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addComponent(CBtipo, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78))
+                .addGap(111, 111, 111))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(CBtipo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
+                .addComponent(jLabel2)
+                .addGap(30, 30, 30)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
         );
@@ -143,77 +131,42 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CBtipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBtipoItemStateChanged
-        if(CBtipo.getSelectedItem().equals("--Seleccione Una Opcion---")){
-            CTUser.setEnabled(false);
-            CTpassword.setEnabled(false);
-            jLabel4.setEnabled(true);
-        }else if(CBtipo.getSelectedItem().equals("Instructor")){    
-            CTUser.setEnabled(false);
-            CTpassword.setEnabled(true);
-            jLabel4.setEnabled(true);
-        }else{
-            CTUser.setEnabled(true);
-            CTpassword.setEnabled(true);
-            jLabel4.setEnabled(true);
-        }
-    }//GEN-LAST:event_CBtipoItemStateChanged
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         String User = CTUser.getText();
         
-        int tipo = CBtipo.getSelectedIndex();
-        String tip = (String)CBtipo.getSelectedItem();
         String pass2 = CTpassword.getText();
         boolean result = false;
         int aux=0;
         
-        if(tip.equalsIgnoreCase("Instructor")){
-            String sql = "FROM Usuario WHERE TipoUsuario = 'Instructor' AND Pass = '"+pass2+"'";
+        
+            String sql = "FROM Usuario WHERE User = '"+User+"' AND Pass = '"+pass2+"'";
             ArrayList<Usuario> lista = new ArrayList<Usuario>();
             Usuario usuario2 = new Usuario();
             lista = controladorHibernate.devolverSQL(sql);
+            String tipo = "";
+            boolean entrar = false;
             for(Usuario item: lista){
+                tipo = item.getTipoUsuario();
                 usuario2.setIdUsuarios(item.getIdUsuarios());
                 usuario2.setNombres(item.getNombres());
+                entrar = true;
             }
-            seguimientoProfesor sP = new seguimientoProfesor(usuario2);
-            sP.setVisible(true);
-            dispose();
-            tipo = 3;
-            result = true;
-            
-        }
-        
-        if(tipo != 3){
-                    String pass = CTpassword.getText();
-
-                    String SQL = "";
-                           SQL += "FROM Usuario Where User='"+User+"' and Pass='"+pass+"'";
-
-                    result = controladorUsuario.validarUsuario(SQL);
-                    aux=1;
-                    System.out.println("Result = "+result);
-                    
-        }else{
-            
-                   
-        }
-        
-        if(result == true){
-            JOptionPane.showMessageDialog(rootPane, "Bienvenido "+User,"EnhoraBuena",JOptionPane.INFORMATION_MESSAGE);
-            
-            if(aux == 1){
-                new Menu().setVisible(true);dispose();
-            }else if(aux == 2){
-                
+            Menu men = new Menu();
+            if(entrar){
+                if(tipo.equals("Instructor")){
+                    seguimientoProfesor sP = new seguimientoProfesor(usuario2);
+                }else if(tipo.equals("Coordinador")){
+                    men.setVisible(true);
+                    dispose();
+                }else if(tipo.equals("Lider")){
+                    men.setVisible(true);
+                    dispose();
+                }
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado", "Informacion", JOptionPane.ERROR_MESSAGE);
+                CTpassword.setText("");
             }
-             
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Error usuario no encontrado","Error",JOptionPane.WARNING_MESSAGE);
-        }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void Bloquear(){
@@ -230,7 +183,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox CBtipo;
     private javax.swing.JTextField CTUser;
     private javax.swing.JPasswordField CTpassword;
     private javax.swing.JButton jButton1;
