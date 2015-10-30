@@ -35,6 +35,7 @@ public class UIEmpresa extends javax.swing.JFrame {
         cargarTabla();
         CTBuscar();
         cargarTxtEmpresa();
+        cargarTablaInhabilitada();
         this.setLocationRelativeTo(null);
     }
 
@@ -43,10 +44,11 @@ public class UIEmpresa extends javax.swing.JFrame {
         
         int fila = Tempresas.getSelectedRow();
         
+        if(fila != -1){
+            System.out.println("Entre el id es: "+fila);
+        }
         
-        String a = model.getValueAt(fila, 0).toString();
-        
-        int actualizar =  Integer.parseInt(a)  ;
+        int idEmpresa = (Integer) Tempresas.getValueAt(fila, 0);
         
         
         String razonsocial = CTrazon.getText();
@@ -56,33 +58,33 @@ public class UIEmpresa extends javax.swing.JFrame {
         
         String email = CTemail.getText();
  
-         Empresa empresa = new Empresa(actualizar, razonsocial, direccion, nit, telefono, email, "Activo");
+         Empresa empresa = new Empresa(idEmpresa, razonsocial, direccion, nit, telefono, email, "Activo");
          
          
-         ArrayList<Empresa> lista = new ArrayList<Empresa>();
-         lista.add(empresa);
+//         ArrayList<Empresa> lista = new ArrayList<Empresa>();
+//         lista.add(empresa);
          
-         int i = 0;
-            try{
-                for(Empresa item: lista){
-
-                    if((item.equals(""))){
-                        i=1;
-                    }else{
-                        i=2;
-                         
-                    }
-                }
-            }catch(Exception ex){
-                System.out.println("Error: "+ex.getMessage());
-            }
-            
-            if(i == 2){
-                
-                
-            }else if(i == 1){
-                JOptionPane.showMessageDialog(null, "Datos incompletos \n Por favor completar", "Datos incompletos", JOptionPane.INFORMATION_MESSAGE);
-            }
+//         int i = 0;
+//            try{
+//                for(Empresa item: lista){
+//
+//                    if((item.equals(""))){
+//                        i=1;
+//                    }else{
+//                        i=2;
+//                         
+//                    }
+//                }
+//            }catch(Exception ex){
+//                System.out.println("Error: "+ex.getMessage());
+//            }
+//            
+//            if(i == 2){
+//                
+//                
+//            }else if(i == 1){
+//                JOptionPane.showMessageDialog(null, "Datos incompletos \n Por favor completar", "Datos incompletos", JOptionPane.INFORMATION_MESSAGE);
+//            }
             
            
             
@@ -831,14 +833,25 @@ public class UIEmpresa extends javax.swing.JFrame {
     private void BTactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTactualizarActionPerformed
         
         boolean entrar = true;
+        int bus = Integer.parseInt(CTnit.getText());
+        ArrayList<Empresa> list = new ArrayList<Empresa>();
+        list = controladorHibernate.devolverSQL("FROM Empresa WHERE Nit = "+bus+" ");
         
+//        for(Empresa item: list){
+//            entrar = false;
+//            JOptionPane.showMessageDialog(rootPane, "Lo sentimos una empresa ya se encuentra registrada con este NIT", "Error....", JOptionPane.WARNING_MESSAGE);
+//            String estado =item.getEstado();
+//        }    
         if((CTdireccion.getText().equals(""))||(CTemail.getText().equals(""))||(CTnit.getText().equals(""))||(CTrazon.getText().equals(""))||(CTtelefono.getText().equals(""))){
             JOptionPane.showMessageDialog(rootPane, "Por favor complete los campos", "Informacion...", JOptionPane.WARNING_MESSAGE);
             entrar = false;
         }
+        int opcion = JOptionPane.showConfirmDialog(rootPane, "Esta seguro de actualizar esta informacion", "Informacion...", JOptionPane.OK_CANCEL_OPTION);
         
-        if(entrar){
-            actualizar();
+        if(opcion == JOptionPane.OK_OPTION){
+            if(entrar){
+                actualizar();            
+            }
         }
 
     }//GEN-LAST:event_BTactualizarActionPerformed

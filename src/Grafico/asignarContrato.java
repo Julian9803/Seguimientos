@@ -62,7 +62,6 @@ public class asignarContrato extends javax.swing.JFrame {
         DCfinal = new com.toedter.calendar.JDateChooser();
         jLabel12 = new javax.swing.JLabel();
         JLBhora = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -199,13 +198,6 @@ public class asignarContrato extends javax.swing.JFrame {
 
         jLabel12.setText("Hora");
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -270,9 +262,7 @@ public class asignarContrato extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(CTficha, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(253, 253, 253)
+                        .addGap(389, 389, 389)
                         .addComponent(BTregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(111, 111, 111)
                         .addComponent(BTlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -336,9 +326,7 @@ public class asignarContrato extends javax.swing.JFrame {
                             .addComponent(CTprograma, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
                             .addComponent(CTficha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(56, 56, 56)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49))))
+                        .addGap(143, 143, 143))))
         );
 
         jMenu1.setText("Menu");
@@ -510,15 +498,6 @@ public class asignarContrato extends javax.swing.JFrame {
     private void CTinstructorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CTinstructorMouseClicked
         CTinstructor.setText("");        
     }//GEN-LAST:event_CTinstructorMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        String name = Nombre();
-        String apell = apellido();
-        System.out.println("El nombre es: "+name);
-        System.out.println("El apellido es: "+apell);
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 
@@ -750,7 +729,7 @@ public class asignarContrato extends javax.swing.JFrame {
        
         if(tama != 0){
             for(Usuario item: list){
-                CBaprendiz.addItem(item.getNombres()+" "+ item.getApellidos());
+                CBaprendiz.addItem(item.getNombres()+"-"+ item.getApellidos());
             }   
         }else{
            CBaprendiz.addItem("No hay aprendis con ese nombre");
@@ -845,7 +824,6 @@ public class asignarContrato extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser DCinicial;
     private javax.swing.JLabel JLBhora;
     private javax.swing.JCheckBoxMenuItem MnewUser;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

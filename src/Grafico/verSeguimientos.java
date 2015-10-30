@@ -22,6 +22,7 @@ public class verSeguimientos extends javax.swing.JFrame {
         idContrato = contrato.getIdContratos();
         Hilo hilo = new Hilo(JLhora);
         cargarTabla();
+        this.setLocationRelativeTo(null);
         
         
     }
@@ -51,8 +52,9 @@ public class verSeguimientos extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusable(false);
+        setUndecorated(true);
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Segumientos del Contrato", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -273,17 +275,23 @@ public class verSeguimientos extends javax.swing.JFrame {
             Tseguimientos.setModel(model);
 
             ArrayList<Seguimientos> lista = new ArrayList<Seguimientos>();
-            lista = controladorHibernate.devolverSinEstado("Seguimientos");
+            String sql = "FROM Seguimientos WHERE idContratos = "+idContrato;
+            lista = controladorHibernate.devolverSQL(sql);
             for(Seguimientos item: lista){
                 model.addRow(item.arrayToVector2());
                 System.out.println("Psaso por el for");
             }
+            esconderId();
         }catch(Exception ex){
             System.out.println("Se genero un  exeption: "+ex.getMessage());
             ex.printStackTrace();
         }
     }
-    
+    public void esconderId(){
+        Tseguimientos.getColumnModel().getColumn(0).setMaxWidth(0);
+        Tseguimientos.getColumnModel().getColumn(0).setMinWidth(0);
+        Tseguimientos.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
     
    
 

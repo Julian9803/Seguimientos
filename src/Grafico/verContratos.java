@@ -675,7 +675,8 @@ public class verContratos extends javax.swing.JFrame {
         }catch(Exception ex){
             System.out.println("Error al cargar la tabla: "+ex.getMessage());
             ex.printStackTrace();
-        }esconderId();
+        }
+        //esconderId();
     }
     
     public void buscarTablaTodo(){

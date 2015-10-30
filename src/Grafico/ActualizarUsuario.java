@@ -596,6 +596,8 @@ public class ActualizarUsuario extends javax.swing.JFrame {
         
     }
     
+    
+    
     public void validarTXT(boolean estado){
         
         CTuser.setVisible(estado);

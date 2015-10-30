@@ -133,6 +133,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Actualizar Contrato"/>
+    <Property name="focusable" type="boolean" value="false"/>
     <Property name="undecorated" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -509,16 +510,25 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="CTaprendiz">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CTaprendizKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="CTempresa">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CTempresaKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="CTcontrato">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CTcontratoKeyTyped"/>
           </Events>

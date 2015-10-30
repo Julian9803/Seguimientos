@@ -88,11 +88,11 @@ public class ActualizarContrato extends javax.swing.JFrame {
        lista = controladorHibernate.devolverTodoTipo("Usuario","Aprendiz");
        
        int tama = lista.size();
-       System.out.println("El numero de item es: "+tama);
+       
        
        if(tama != 0){
             for(Usuario item: lista){
-                CBaprendiz.addItem(item.getNombres());
+                CBaprendiz.addItem(item.getNombres()+"-"+item.getNumeroDocumento());
             }   
        }else{
            CBaprendiz.addItem("No hay registro de aprendizes");
@@ -124,58 +124,103 @@ public class ActualizarContrato extends javax.swing.JFrame {
             }
         }
     
+    
     public void actualizarDatos(){
-        String BUsuario = (String) CBaprendiz.getSelectedItem();
-        String BEmpresa = (String) CBempresa.getSelectedItem();
-        
-        ArrayList<Empresa> listaE = new ArrayList<Empresa>();
-        listaE = controladorHibernate.devolverCampo("Empresa", "Razon_Social", BEmpresa);
-        int idE = 0;
-        for(Empresa itemE: listaE){
-            idE = itemE.getIdEmpresa();
+        try{
+            String NUsuario = Nombre();
+            long DocumentoU = Long.parseLong(documento());
+
+            String BEmpresa = (String) CBempresa.getSelectedItem();
+
+            ArrayList<Empresa> listaE = new ArrayList<Empresa>();
+            listaE = controladorHibernate.devolverCampo("Empresa", "Razon_Social", BEmpresa);
+            int idE = 0;
+            for(Empresa itemE: listaE){
+                idE = itemE.getIdEmpresa();
+            }
+
+            
+            ArrayList<Usuario> listaU = new ArrayList<Usuario>();
+            String SQL = "FROM Usuario WHERE Nombres ='"+NUsuario+"' AND NumeroDocumento = "+DocumentoU+" ";
+            listaU = controladorHibernate.devolverSQL(SQL);
+            int idU = 0;
+            for(Usuario itemUs: listaU){
+                idU = itemUs.getIdUsuarios();
+            }
+
+            Usuario usuario = new Usuario();
+            usuario.setIdUsuarios(idU);
+            Empresa empresa = new Empresa();
+            empresa.setIdEmpresa(idE);
+    //        Empresa empr = (Empresa) CBempresa.getSelectedItem();
+    //        System.out.println(empr.getDireccion()+"zxzxczxczxc");    
+    //        Usuario apre = (Usuario) CBaprendiz.getSelectedItem();
+
+            String jefeInmediato = CTjefe.getText();
+            String cargoJefe = CTcargo.getText();
+            Date fechaInicial = DCinicial.getDate();
+            Date fechaFinal = DCfinal.getDate();
+            String Sede = CTsede.getText();
+            String tipoContrato = (String)CBcontrato.getSelectedItem();
+            String Programa = CTprograma.getText();
+            int Ficha = Integer.parseInt(CTficha.getText());
+
+    //        contrato.setIdContratos(idContrato);
+    //        contrato.setEmpresa(empresa);
+    //        contrato.setUsuario(usuario);
+    //        contrato.setJefeInmediato(jefeInmediato);
+    //        contrato.setCargoJefe(cargoJefe);
+    //        contrato.setFechaFinal(fechaFinal);
+    //        contrato.setFechaInicial(fechaInicial);
+    //        contrato.setTipoContrato(tipoContrato);
+    //        contrato.setPrograma(Programa);
+    //        contrato.setFicha(Ficha);
+
+            //Contratos contrat = new Contratos(empresa, usuario, jefeInmediato, cargoJefe, fechaInicial, fechaFinal, Sede, tipoContrato, Programa, Ficha, "Activo");
+            Contratos cont = new Contratos(idContrato, empresa, usuario, jefeInmediato, cargoJefe, fechaInicial, fechaFinal, Sede, tipoContrato, Programa, Ficha, Sede);
+            controladorHibernate.actualalizarContrato(cont);
+        }catch(Exception ex){
+            System.out.println("Error en el metodo de actualisar: "+ex.getMessage());
+            ex.printStackTrace();
         }
         
-        String BUusario = (String) CBaprendiz.getSelectedItem();
-        ArrayList<Usuario> listaU = new ArrayList<Usuario>();
-        listaU = controladorHibernate.devolverCampo("Usuario", "Nombres", BUsuario);
-        int idU = 0;
-        for(Usuario itemUs: listaU){
-            idU = itemUs.getIdUsuarios();
+    }
+    
+    public String Nombre(){
+        String jul = (String)CBaprendiz.getSelectedItem();
+        char[] pas = jul.toCharArray();
+        String Nombre = "";
+        char aux;
+        for(int i = 0; i<pas.length; i++){
+            aux = pas[i];
+            if(aux=='-'){
+                System.out.println("Inicio apellido");
+                return Nombre;
+            }else{
+                Nombre += pas[i];
+                
+            }
         }
-        
-        Usuario usuario = new Usuario();
-        usuario.setIdUsuarios(idU);
-        Empresa empresa = new Empresa();
-        empresa.setIdEmpresa(idE);
-//        Empresa empr = (Empresa) CBempresa.getSelectedItem();
-//        System.out.println(empr.getDireccion()+"zxzxczxczxc");    
-//        Usuario apre = (Usuario) CBaprendiz.getSelectedItem();
-        
-        String jefeInmediato = CTjefe.getText();
-        String cargoJefe = CTcargo.getText();
-        Date fechaInicial = DCinicial.getDate();
-        Date fechaFinal = DCfinal.getDate();
-        String Sede = CTsede.getText();
-        String tipoContrato = (String)CBcontrato.getSelectedItem();
-        String Programa = CTprograma.getText();
-        int Ficha = Integer.parseInt(CTficha.getText());
-        
-//        contrato.setIdContratos(idContrato);
-//        contrato.setEmpresa(empresa);
-//        contrato.setUsuario(usuario);
-//        contrato.setJefeInmediato(jefeInmediato);
-//        contrato.setCargoJefe(cargoJefe);
-//        contrato.setFechaFinal(fechaFinal);
-//        contrato.setFechaInicial(fechaInicial);
-//        contrato.setTipoContrato(tipoContrato);
-//        contrato.setPrograma(Programa);
-//        contrato.setFicha(Ficha);
-        
-        //Contratos contrat = new Contratos(empresa, usuario, jefeInmediato, cargoJefe, fechaInicial, fechaFinal, Sede, tipoContrato, Programa, Ficha, "Activo");
-        Contratos cont = new Contratos(idContrato, empresa, usuario, jefeInmediato, cargoJefe, fechaInicial, fechaFinal, Sede, tipoContrato, Programa, Ficha, Sede);
-        controladorHibernate.actualalizarContrato(cont);
-        
-        
+        return "Sin nombre";
+    }
+    
+    public String documento(){
+        String jul = (String)CBaprendiz.getSelectedItem();
+        char[] pas = jul.toCharArray();
+        String documento = "";
+        char aux;
+        int p = 0;
+        for(int i = 0; i<pas.length; i++){
+            aux = pas[i];
+            if(p == 1){                
+                documento += pas[i];                
+            }
+            if(aux=='-'){
+                p = 1;
+            }
+            
+        }
+        return documento;
     }
     
     @SuppressWarnings("unchecked")
@@ -227,6 +272,7 @@ public class ActualizarContrato extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Actualizar Contrato");
+        setFocusable(false);
         setUndecorated(true);
         setResizable(false);
 
@@ -314,18 +360,21 @@ public class ActualizarContrato extends javax.swing.JFrame {
             }
         });
 
+        CTaprendiz.setEditable(false);
         CTaprendiz.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 CTaprendizKeyTyped(evt);
             }
         });
 
+        CTempresa.setEditable(false);
         CTempresa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 CTempresaKeyTyped(evt);
             }
         });
 
+        CTcontrato.setEditable(false);
         CTcontrato.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 CTcontratoKeyTyped(evt);
@@ -590,6 +639,7 @@ public class ActualizarContrato extends javax.swing.JFrame {
                 try{
                     actualizarDatos();
                     JOptionPane.showMessageDialog(rootPane, "Se actualiso correctamente la informacion","EnhoraBuena¡¡",JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(rootPane, "Lo sentimo ocurrios un problema al actualizar...","Error",JOptionPane.WARNING_MESSAGE);
                     System.out.println("Error al actualizar: "+ex.getMessage());

@@ -359,14 +359,14 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
     }//GEN-LAST:event_MnewUserActionPerformed
 
     private void CTnumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTnumeroKeyTyped
-        int k=(int)evt.getKeyChar();
-        if (k > 47 && k < 58) {
-            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
-        }
-         if(k==10){
-            CTnumero.transferFocus();
-        }
+//        int k=(int)evt.getKeyChar();
+//        if (k > 47 && k < 58) {
+//            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+//            JOptionPane.showMessageDialog(null,"No puede ingresar numeros!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+//        }
+//         if(k==10){
+//            CTnumero.transferFocus();
+//        }
     }//GEN-LAST:event_CTnumeroKeyTyped
 
     private void CTciudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTciudadKeyTyped
