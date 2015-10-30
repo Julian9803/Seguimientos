@@ -208,8 +208,8 @@ public class verContratos extends javax.swing.JFrame {
                 .addComponent(BTactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BTfinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -232,7 +232,7 @@ public class verContratos extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Asignar Seguimento");
+        jButton3.setText("Asignar Seguimiento");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -244,9 +244,8 @@ public class verContratos extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(85, Short.MAX_VALUE))
         );
@@ -363,7 +362,7 @@ public class verContratos extends javax.swing.JFrame {
         jMenu1.add(jMenu3);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Seguimientos.png"))); // NOI18N
-        jMenu2.setText("Segumientos");
+        jMenu2.setText("Seguimientos");
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ver Seguimientos.png"))); // NOI18N
         jMenuItem5.setText("Ver Seguimientos");
@@ -378,6 +377,11 @@ public class verContratos extends javax.swing.JFrame {
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/close6.png"))); // NOI18N
         jMenuItem1.setText("Salir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -469,12 +473,13 @@ public class verContratos extends javax.swing.JFrame {
         Contratos contrato = new Contratos();
         if(fila != -1){
             
-            
-            contrato.setIdContratos((Integer)Tcontratos.getValueAt(fila, 0));
-            System.out.println("El id enviado es: "+contrato.getIdContratos());
-            ActualizarContrato act = new ActualizarContrato(contrato);
-            act.setVisible(true);
-            
+            boolean entrar = true;
+            if(entrar){            
+                contrato.setIdContratos((Integer)Tcontratos.getValueAt(fila, 0));
+                System.out.println("El id enviado es: "+contrato.getIdContratos());
+                ActualizarContrato act = new ActualizarContrato(contrato);
+                act.setVisible(true);
+            }
         }else{
             JOptionPane.showMessageDialog(rootPane, "Por favor seleccione un contrato para actualizar¡¡","Informacion....",JOptionPane.WARNING_MESSAGE);
         }
@@ -485,7 +490,7 @@ public class verContratos extends javax.swing.JFrame {
         int fila = Tcontratos.getSelectedRow();
         
         if(fila != -1){
-            int opcion = JOptionPane.showConfirmDialog(rootPane, "Esta seguro de fianlizar este contrato?","Confirmacion",JOptionPane.QUESTION_MESSAGE);
+            int opcion = JOptionPane.showConfirmDialog(null, "Esta seguro de fianlizar este contrato?","Confirmacion",JOptionPane.OK_CANCEL_OPTION);
             if(opcion == JOptionPane.OK_OPTION){
                finalizarContrato(fila);
                System.out.println("Mensaje");
@@ -549,8 +554,9 @@ public class verContratos extends javax.swing.JFrame {
                 lista = controladorHibernate.devolverUnoID("Seguimientos", "idContratos", idContrato);
                 for(Seguimientos item: lista){
                     entrarF = false;
+                    JOptionPane.showMessageDialog(rootPane, "Lo sentimos la duracion del contrato es de 3 meses, y ya tiene asignado un seguimiento","Informacion¡¡",JOptionPane.WARNING_MESSAGE);
                 }
-                JOptionPane.showMessageDialog(rootPane, "Lo sentimos la duracion del contrato es de 3 meses, y ya tiene asignado un seguimiento","Informacion¡¡",JOptionPane.WARNING_MESSAGE);
+                
             }
             int i =0;
             if(meses == 6){
@@ -565,7 +571,7 @@ public class verContratos extends javax.swing.JFrame {
             
             if(i == 2){
                 entrarF = false;
-                JOptionPane.showMessageDialog(rootPane, "El contrato alcanso el numero maximo de seguimientos, 2 por 6 meses", "Informacion¡¡", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "El contrato alcanzo el numero maximo de seguimientos, 2 por 6 meses", "Informacion¡¡", JOptionPane.WARNING_MESSAGE);
             }
             
             
@@ -638,6 +644,12 @@ public class verContratos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+        new Login().setVisible(true); dispose();
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public  int diferenciaEnDias2(Date fechaMayor, Date fechaMenor) {
        
         long mayor = fechaMayor.getTime();
@@ -676,7 +688,7 @@ public class verContratos extends javax.swing.JFrame {
             System.out.println("Error al cargar la tabla: "+ex.getMessage());
             ex.printStackTrace();
         }
-        //esconderId();
+        esconderId();
     }
     
     public void buscarTablaTodo(){

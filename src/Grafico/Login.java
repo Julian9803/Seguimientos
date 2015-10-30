@@ -4,13 +4,23 @@ import Clases.Usuario;
 import Controlador.controladorHibernate;
 import Controlador.controladorUsuario;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 public class Login extends javax.swing.JFrame {
 
    
     public Login() {
         initComponents();
+        try {
+            JFrame.setDefaultLookAndFeelDecorated(true);
+            SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.SaharaSkin");
+
+            SubstanceLookAndFeel.setCurrentWatermark("org.jvnet.substance.watermark.SubstanceNullWatermark");
+
+        } catch (Exception e2) {
+        }
         this.setLocationRelativeTo(null);
         
     }
@@ -51,6 +61,15 @@ public class Login extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        CTpassword.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                CTpasswordMouseDragged(evt);
+            }
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                CTpasswordMouseMoved(evt);
             }
         });
 
@@ -168,6 +187,12 @@ public class Login extends javax.swing.JFrame {
                 CTpassword.setText("");
             }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void CTpasswordMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CTpasswordMouseDragged
+    }//GEN-LAST:event_CTpasswordMouseDragged
+
+    private void CTpasswordMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CTpasswordMouseMoved
+    }//GEN-LAST:event_CTpasswordMouseMoved
 
     public void Bloquear(){
          CTUser.setEnabled(false);

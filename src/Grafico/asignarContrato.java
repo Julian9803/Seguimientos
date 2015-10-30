@@ -195,6 +195,11 @@ public class asignarContrato extends javax.swing.JFrame {
         });
 
         BTlimpiar.setText("Limpiar");
+        BTlimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTlimpiarActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Hora");
 
@@ -394,7 +399,7 @@ public class asignarContrato extends javax.swing.JFrame {
         jMenu1.add(jMenu3);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Seguimientos.png"))); // NOI18N
-        jMenu2.setText("Segumientos");
+        jMenu2.setText("Seguimientos");
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ver Seguimientos.png"))); // NOI18N
         jMenuItem5.setText("Ver Seguimientos");
@@ -409,6 +414,11 @@ public class asignarContrato extends javax.swing.JFrame {
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/close6.png"))); // NOI18N
         jMenuItem1.setText("Salir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -499,32 +509,6 @@ public class asignarContrato extends javax.swing.JFrame {
         CTinstructor.setText("");        
     }//GEN-LAST:event_CTinstructorMouseClicked
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-
-        new UIEmpresa().setVisible(true);dispose();
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        new verContratos().setVisible(true);dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
-        new asignarContrato().setVisible(true);dispose();
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        new UIusuario().setVisible(true);dispose();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void MnewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnewUserActionPerformed
-        new NuevoUsuario().setVisible(true);dispose();
-    }//GEN-LAST:event_MnewUserActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        new totalSeguimientos().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
     private void CTestudianteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTestudianteKeyTyped
          int k=(int)evt.getKeyChar();
         if (k > 47 && k < 58) {
@@ -601,6 +585,65 @@ public class asignarContrato extends javax.swing.JFrame {
             CTficha.transferFocus();
         }
     }//GEN-LAST:event_CTfichaKeyTyped
+
+    private void BTlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTlimpiarActionPerformed
+       limpiar();
+    }//GEN-LAST:event_BTlimpiarActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+
+        new UIEmpresa().setVisible(true);dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new verContratos().setVisible(true);dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        new asignarContrato().setVisible(true);dispose();
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new UIusuario().setVisible(true);dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void MnewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnewUserActionPerformed
+        new NuevoUsuario().setVisible(true);dispose();
+    }//GEN-LAST:event_MnewUserActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new totalSeguimientos().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+        new Login().setVisible(true); dispose();
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    
+    
+    private void limpiar(){
+        
+        CBempresa.setSelectedIndex(0);
+        CBaprendiz.setSelectedIndex(0);
+        CTjefe.setText("");
+        CTcargojefe.setText("");
+        CTprograma.setText("");
+        CTficha.setText("");
+        CBcontrato.setSelectedIndex(0);
+        CTsede.setText("");
+       
+        
+        
+    } 
+    
+    
+    
+    
+    
+    
+    
     
     public String Nombre(){
         String jul = (String)CBaprendiz.getSelectedItem();
@@ -775,7 +818,7 @@ public class asignarContrato extends javax.swing.JFrame {
                        
         usuario.setIdUsuarios(idU);
         String jefeInmediato = CTjefe.getText();
-        String cargoJefe = CTjefe.getText();
+        String cargoJefe = CTcargojefe.getText();
         Date fechaInicial = DCinicial.getDate();
         Date fechaFinal = DCfinal.getDate();
         String sede = CTsede.getText();

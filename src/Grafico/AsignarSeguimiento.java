@@ -58,6 +58,8 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         MnewUser = new javax.swing.JCheckBoxMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         jTextField6.setText("jTextField1");
@@ -275,8 +277,27 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
 
         jMenu1.add(jMenu3);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Seguimientos.png"))); // NOI18N
+        jMenu2.setText("Seguimientos");
+
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ver Seguimientos.png"))); // NOI18N
+        jMenuItem5.setText("Ver Seguimientos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenu1.add(jMenu2);
+
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/close6.png"))); // NOI18N
         jMenuItem1.setText("Salir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -336,28 +357,6 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-
-        new UIEmpresa().setVisible(true);dispose();
-
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        new verContratos().setVisible(true);dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
-        new asignarContrato().setVisible(true);dispose();
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        new UIusuario().setVisible(true);dispose();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void MnewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnewUserActionPerformed
-        new NuevoUsuario().setVisible(true);dispose();
-    }//GEN-LAST:event_MnewUserActionPerformed
-
     private void CTnumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTnumeroKeyTyped
 //        int k=(int)evt.getKeyChar();
 //        if (k > 47 && k < 58) {
@@ -379,6 +378,38 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
             CTciudad.transferFocus();
         }
     }//GEN-LAST:event_CTciudadKeyTyped
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+
+        new UIEmpresa().setVisible(true);dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new verContratos().setVisible(true);dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        new asignarContrato().setVisible(true);dispose();
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new UIusuario().setVisible(true);dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void MnewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnewUserActionPerformed
+        new NuevoUsuario().setVisible(true);dispose();
+    }//GEN-LAST:event_MnewUserActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new totalSeguimientos().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+        new Login().setVisible(true); dispose();
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     
     public void comboInstructores(){
         ArrayList<Usuario> lista = new ArrayList<Usuario>();
@@ -391,24 +422,29 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
     }
     
     public void registrar(){
-        String cI = (String)CBinstructor.getSelectedItem();
-        ArrayList<Usuario> listaU = new ArrayList<Usuario>();
-        listaU = controladorHibernate.devolverCampo("Usuario", "Correo", cI);
-        int idI = 0;
-        for(Usuario itemI: listaU){
-            idI = itemI.getIdUsuarios();
+        try{
+            String cI = (String)CBinstructor.getSelectedItem();
+            ArrayList<Usuario> listaU = new ArrayList<Usuario>();
+            listaU = controladorHibernate.devolverCampo("Usuario", "Nombres", cI);
+            int idI = 0;
+            for(Usuario itemI: listaU){
+                idI = itemI.getIdUsuarios();
+            }
+            Usuario usuario = new Usuario();
+            usuario.setIdUsuarios(idI);
+            int numero = Integer.parseInt(CTnumero.getText());
+            Date fechaSeguimiento = DCseguimiento.getDate();
+            String ciudad = CTciudad.getText();
+            String tipoInforme = (String)CBinforme.getSelectedItem();
+            Date fechaInicial = DCFinicial.getDate();
+            Date fechaFinal = DCFfinal.getDate();
+
+            Seguimientos seguimiento = new Seguimientos(contratos, usuario, numero, fechaSeguimiento, ciudad, tipoInforme, fechaInicial, fechaFinal);
+            controladorHibernate.insertarObjecto(seguimiento);
+        }catch(Exception ex){
+            System.out.println("Error al registrar: "+ex.getMessage());
+            ex.printStackTrace();
         }
-        Usuario usuario = new Usuario();
-        usuario.setIdUsuarios(idI);
-        int numero = Integer.parseInt(CTnumero.getText());
-        Date fechaSeguimiento = DCseguimiento.getDate();
-        String ciudad = CTciudad.getText();
-        String tipoInforme = (String)CBinforme.getSelectedItem();
-        Date fechaInicial = DCFinicial.getDate();
-        Date fechaFinal = DCFfinal.getDate();
-        
-        Seguimientos seguimiento = new Seguimientos(contratos, usuario, numero, fechaSeguimiento, ciudad, tipoInforme, fechaInicial, fechaFinal);
-        controladorHibernate.insertarObjecto(seguimiento);
     }
     
     
@@ -433,6 +469,7 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
@@ -441,6 +478,7 @@ public class AsignarSeguimiento extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables

@@ -128,15 +128,24 @@ public class usuariosInhablitados extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void llenarTabla(){
-        String filas[][]={};
-        String columnas[]={"idUsuario","Nombres","Apellidos","Numero Documento","Telefono","Correo","Direccion","Tipo Usuario","User","Contraseña"};
-        model = new DefaultTableModel(filas, columnas);
-        Tusuarios.setModel(model);
-        ArrayList<Usuario> lista = new ArrayList<Usuario>();
-        lista = controladorHibernate.devolverSQL("FROM Usuario WHERE Estado = 'Inactivo'");
-        for(Usuario item: lista){
-            model.addRow(item.arrayToVector());
-        }
+        
+        try{
+                    String filas[][]={};
+                    String columnas[]={"idUsuario","Nombres","Apellidos","Numero Documento","Telefono","Correo","Direccion","Tipo Usuario","Usuario","Contraseña"};
+                    model = new DefaultTableModel(filas, columnas);
+                    Tusuarios.setModel(model);
+                    ArrayList<Usuario> lista = new ArrayList<Usuario>();
+                    lista = controladorHibernate.devolverSQL("FROM Usuario WHERE Estado = 'Inactivo'");
+                    for(Usuario item: lista){
+                        model.addRow(item.arrayToVector());
+                    }
+                    
+        }catch(Exception ex){  }
+
+        Tusuarios.getColumnModel().getColumn(0).setMaxWidth(0);
+        Tusuarios.getColumnModel().getColumn(0).setMinWidth(0);
+        Tusuarios.getColumnModel().getColumn(0).setPreferredWidth(0);
+        
     }
     
     public static void main(String args[]) {

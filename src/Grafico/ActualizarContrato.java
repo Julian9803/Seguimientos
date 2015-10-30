@@ -461,7 +461,7 @@ public class ActualizarContrato extends javax.swing.JFrame {
                             .addComponent(JLBhora, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(CTaprendiz, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -505,7 +505,7 @@ public class ActualizarContrato extends javax.swing.JFrame {
                     .addComponent(CTprograma, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(CTficha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -577,7 +577,7 @@ public class ActualizarContrato extends javax.swing.JFrame {
         jMenu1.add(jMenu3);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Seguimientos.png"))); // NOI18N
-        jMenu2.setText("Segumientos");
+        jMenu2.setText("Seguimientos");
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ver Seguimientos.png"))); // NOI18N
         jMenuItem5.setText("Ver Seguimientos");
@@ -592,6 +592,11 @@ public class ActualizarContrato extends javax.swing.JFrame {
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/close6.png"))); // NOI18N
         jMenuItem1.setText("Salir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -628,7 +633,7 @@ public class ActualizarContrato extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         boolean entrar = true;
         
-        if((CTaprendiz.getText().equals(""))||(CTcargo.getText().equals(""))||(CTcontrato.getText().equals(""))||(CTempresa.getText().equals(""))||(CTficha.getText().equals(""))||(CTjefe.getText().equals(""))||(CTprograma.getText().equals(""))||(CTsede.getText().equals(""))||(CBaprendiz.getSelectedItem().equals("--Seleccione Un Aprendiz--"))||(CBempresa.getSelectedItem().equals("---Seleccione una Empresa---"))){
+        if((CTaprendiz.getText().equals(""))||(CTcargo.getText().equals(""))||(CTempresa.getText().equals(""))||(CTficha.getText().equals(""))||(CTjefe.getText().equals(""))||(CTprograma.getText().equals(""))||(CTsede.getText().equals(""))||(CBaprendiz.getSelectedItem().equals("--Seleccione Un Aprendiz--"))||(CBempresa.getSelectedItem().equals("---Seleccione una Empresa---"))){
             entrar = false;
             JOptionPane.showMessageDialog(rootPane, "Por favor complete todos los campos", "Informacion....", JOptionPane.WARNING_MESSAGE);
         }
@@ -638,43 +643,16 @@ public class ActualizarContrato extends javax.swing.JFrame {
             if(opcion == JOptionPane.OK_OPTION){
                 try{
                     actualizarDatos();
-                    JOptionPane.showMessageDialog(rootPane, "Se actualiso correctamente la informacion","EnhoraBuena¡¡",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane, "Se actualizo correctamente la informacion","EnhoraBuena¡¡",JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }catch(Exception ex){
-                    JOptionPane.showMessageDialog(rootPane, "Lo sentimo ocurrios un problema al actualizar...","Error",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane, "Lo sentimos ocurrio un problema al actualizar...","Error",JOptionPane.WARNING_MESSAGE);
                     System.out.println("Error al actualizar: "+ex.getMessage());
                     ex.printStackTrace();
                 }    
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-
-        new UIEmpresa().setVisible(true);dispose();
-
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        new verContratos().setVisible(true);dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
-        new asignarContrato().setVisible(true);dispose();
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        new UIusuario().setVisible(true);dispose();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void MnewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnewUserActionPerformed
-        new NuevoUsuario().setVisible(true);dispose();
-    }//GEN-LAST:event_MnewUserActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        new totalSeguimientos().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void CTaprendizKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CTaprendizKeyTyped
         int k=(int)evt.getKeyChar();
@@ -777,6 +755,38 @@ public class ActualizarContrato extends javax.swing.JFrame {
             DCinicial.transferFocus();
         }
     }//GEN-LAST:event_DCinicialKeyTyped
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+
+        new UIEmpresa().setVisible(true);dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new verContratos().setVisible(true);dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        new asignarContrato().setVisible(true);dispose();
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new UIusuario().setVisible(true);dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void MnewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnewUserActionPerformed
+        new NuevoUsuario().setVisible(true);dispose();
+    }//GEN-LAST:event_MnewUserActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new totalSeguimientos().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+        new Login().setVisible(true); dispose();
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     
     

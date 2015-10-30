@@ -21,7 +21,7 @@ public class totalSeguimientos extends javax.swing.JFrame {
         Hilo hilo = new Hilo(JLhora);
         hilo.start();
         cargarTabla();
-        cargarEmpresa();
+//        cargarEmpresa();
     }
 
     
@@ -33,12 +33,10 @@ public class totalSeguimientos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tseguimientos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         JLhora = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        CBempresa = new javax.swing.JComboBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -85,13 +83,6 @@ public class totalSeguimientos extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,9 +93,7 @@ public class totalSeguimientos extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(302, 302, 302)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 433, Short.MAX_VALUE)
+                        .addGap(302, 808, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -114,9 +103,7 @@ public class totalSeguimientos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
@@ -129,13 +116,6 @@ public class totalSeguimientos extends javax.swing.JFrame {
         jLabel2.setText("Historial de seguimientos");
 
         jLabel3.setText("Ver seguimientos de la empresa:");
-
-        CBempresa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CBempresa.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CBempresaItemStateChanged(evt);
-            }
-        });
 
         jMenu1.setText("Menu");
 
@@ -202,7 +182,7 @@ public class totalSeguimientos extends javax.swing.JFrame {
         jMenu1.add(jMenu3);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Seguimientos.png"))); // NOI18N
-        jMenu2.setText("Segumientos");
+        jMenu2.setText("Seguimientos");
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ver Seguimientos.png"))); // NOI18N
         jMenuItem5.setText("Ver Seguimientos");
@@ -217,6 +197,11 @@ public class totalSeguimientos extends javax.swing.JFrame {
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/close6.png"))); // NOI18N
         jMenuItem1.setText("Salir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -239,8 +224,6 @@ public class totalSeguimientos extends javax.swing.JFrame {
                         .addComponent(JLhora, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(CBempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -253,15 +236,9 @@ public class totalSeguimientos extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addComponent(jLabel2))
                     .addComponent(JLhora, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CBempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                .addGap(11, 11, 11)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -299,23 +276,11 @@ public class totalSeguimientos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 
-    private void CBempresaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBempresaItemStateChanged
-        String tipo = (String) CBempresa.getSelectedItem();
-        if(tipo.equals("---Seleccione Una Empresa---")){
-            cargarTabla();
-        }else{
-            int id = cargarIdEmpresa(tipo);
-            System.out.println("El id de la empresa es: "+id);
-            int idC = cargarIdContrato(id);
-            System.out.println("El id de contrato es: "+idC);
-            cargarPorEmpresa(idC);
-            
-        }
-    }//GEN-LAST:event_CBempresaItemStateChanged
+        new Login().setVisible(true); dispose();
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public void cargarTabla(){
         
@@ -332,22 +297,25 @@ public class totalSeguimientos extends javax.swing.JFrame {
             model.addRow(item.arrayToVector2());
         }
         
+        Tseguimientos.getColumnModel().getColumn(0).setMaxWidth(0);
+        Tseguimientos.getColumnModel().getColumn(0).setMinWidth(0);
+        Tseguimientos.getColumnModel().getColumn(0).setPreferredWidth(0);
         
     }
     
-    public void cargarEmpresa(){
-        String items[]={};
-        modelC = new DefaultComboBoxModel(items);
-        CBempresa.setModel(modelC);
-        
-        ArrayList<Empresa> lista = new ArrayList<Empresa>();
-        lista = controladorHibernate.devolverTodo("Empresa");
-        modelC.addElement("---Seleccione Una Empresa---");
-        for (Empresa item : lista) {
-            modelC.addElement(item.getRazonSocial());
-        }
-        
-    }
+//    public void cargarEmpresa(){
+//        String items[]={};
+//        modelC = new DefaultComboBoxModel(items);
+//        CBempresa.setModel(modelC);
+//        
+//        ArrayList<Empresa> lista = new ArrayList<Empresa>();
+//        lista = controladorHibernate.devolverTodo("Empresa");
+//        modelC.addElement("---Seleccione Una Empresa---");
+//        for (Empresa item : lista) {
+//            modelC.addElement(item.getRazonSocial());
+//        }
+//        
+//    }
     
     public void cargarPorEmpresa(int id){
         String filas[][]={};
@@ -399,12 +367,10 @@ public class totalSeguimientos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox CBempresa;
     private javax.swing.JLabel JLhora;
     private javax.swing.JCheckBoxMenuItem MnewUser;
     private javax.swing.JTable Tseguimientos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

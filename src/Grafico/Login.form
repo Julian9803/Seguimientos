@@ -172,6 +172,10 @@
               </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="CTpassword">
+              <Events>
+                <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="CTpasswordMouseDragged"/>
+                <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="CTpasswordMouseMoved"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
