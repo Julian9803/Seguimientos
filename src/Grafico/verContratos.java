@@ -474,6 +474,13 @@ public class verContratos extends javax.swing.JFrame {
         if(fila != -1){
             
             boolean entrar = true;
+            int id = (Integer)Tcontratos.getValueAt(fila, 0);
+            ArrayList<Contratos> list1 = new ArrayList<Contratos>();
+            list1 = controladorHibernate.devolverTodo("Contratos");
+            if(list1.size() != 0){
+                entrar = false;
+                JOptionPane.showMessageDialog(null, "Lo sentimos el contrato esta bajo seguiminetos y no se puede actualizar", "Informacion", JOptionPane.WARNING_MESSAGE);
+            }
             if(entrar){            
                 contrato.setIdContratos((Integer)Tcontratos.getValueAt(fila, 0));
                 System.out.println("El id enviado es: "+contrato.getIdContratos());
